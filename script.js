@@ -1,3 +1,7 @@
+// ===============================
+// BASE DE DATOS DE CLIENTES
+// ===============================
+
 const clientes = {
   "MARIA2026": {
     nombre: "XV - María",
@@ -30,12 +34,48 @@ const clientes = {
   }
 };
 
+// ===============================
+// LOGIN
+// ===============================
+
 function verificarCodigo() {
-  const codigo = document.getElementById("codigo").value.toUpperCase();
-  
+  const input = document.getElementById("codigo");
+  const error = document.getElementById("error");
+
+  if (!input) return;
+
+  const codigo = input.value.trim().toUpperCase();
+
+  // Limpia mensaje anterior
+  error.textContent = "";
+
+  if (!codigo) {
+    error.textContent = "Ingresá tu código de evento";
+    return;
+  }
+
   if (clientes[codigo]) {
+
+    // Guardamos código en memoria del navegador
+    localStorage.setItem("clienteActivo", codigo);
+
+    // Redirige al panel
     window.location.href = `evento.html?codigo=${codigo}`;
+
   } else {
-    document.getElementById("error").textContent = "Código inválido";
+    error.textContent = "Código inválido";
   }
 }
+
+// Permite presionar ENTER para ingresar
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("codigo");
+
+  if (input) {
+    input.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        verificarCodigo();
+      }
+    });
+  }
+});
