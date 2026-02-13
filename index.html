@@ -5,19 +5,98 @@
   <title>Área Privada - Ever Fotografías</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Fuente más elegante -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #1a1a22, #0f0f12);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .logo h1 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      font-size: 13px;
+      color: #c8a95c;
+      letter-spacing: 2px;
+    }
+
+    .login-card {
+      background: #17171c;
+      padding: 30px 25px;
+      border-radius: 18px;
+      border: 1px solid #24242b;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .login-card p {
+      color: #9ca3af;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    input {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    button {
+      margin-top: 5px;
+    }
+
+    .footer-login {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .footer-login span {
+      color: #c8a95c;
+    }
+  </style>
 </head>
+
 <body>
 
   <div class="login-container">
-    
-    <h1>Ever Fotografías</h1>
-    <p class="subtitulo">Área privada exclusiva para clientes</p>
 
-    <input type="text" id="codigo" placeholder="Ingresá tu código de evento">
-    
-    <button onclick="verificarCodigo()">Ingresar a mi evento</button>
+    <div class="logo">
+      <h1>Ever Fotografías</h1>
+      <span>EVENTOS · XV · BODAS</span>
+    </div>
 
-    <p id="error"></p>
+    <div class="login-card">
+      <p>Ingresá tu código exclusivo para acceder al panel de tu evento.</p>
+
+      <input 
+        type="text" 
+        id="codigo" 
+        placeholder="Ej: Maria2026"
+        autocomplete="off"
+      >
+
+      <button onclick="verificarCodigo()">
+        Ingresar a mi evento
+      </button>
+
+      <p id="error"></p>
+    </div>
+
+    <div class="footer-login">
+      Plataforma privada desarrollada por <span>Ever Fotografías</span>
+    </div>
 
   </div>
 
