@@ -1,211 +1,197 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0c0c10;
+  color:#fff;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #1c1c24, #0e0e12);
-  color: white;
-}
-
-.evento-container {
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
+.evento-container{
+  max-width:520px;
+  margin:auto;
+  padding:18px;
 }
 
 /* PORTADA */
 
-.portada {
-  height: 220px;
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+.portada{
+  height:140px;
+  border-radius:22px;
+  overflow:hidden;
+  margin-bottom:18px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
 }
 
-.portada-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
+.portada::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
 }
 
-.portada-overlay h1 {
-  font-size: 24px;
-  font-weight: 600;
+.portada-overlay{
+  position:absolute;
+  bottom:15px;
+  left:18px;
+  z-index:2;
 }
 
-/* CARD */
-
-.card {
-  background: linear-gradient(145deg,#181822,#111117);
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 18px;
-  border: 1px solid #24242c;
-  box-shadow: 0 0 40px rgba(200,169,92,0.05);
+.portada-overlay h1{
+  font-size:22px;
+  font-weight:600;
 }
 
-.card h2 {
-  color: #c8a95c;
-  margin-bottom: 15px;
-  font-size: 18px;
+/* CARDS */
+
+.card{
+  background:linear-gradient(160deg,#15151b,#101015);
+  border-radius:22px;
+  padding:18px;
+  margin-bottom:16px;
+  border:1px solid #26262f;
+  box-shadow:0 10px 35px rgba(0,0,0,.45);
 }
 
-.card h3 {
-  font-size: 17px;
-  margin-bottom: 12px;
+.card h2{
+  color:#c8a95c;
+  font-size:16px;
+  margin-bottom:14px;
+  letter-spacing:.5px;
 }
 
 /* CONTADOR */
 
-.contador-grid {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-  gap: 12px;
+.contador-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
 }
 
-.tiempo-box {
-  background: #1c1c25;
-  padding: 15px;
-  border-radius: 14px;
-  text-align: center;
-  border: 1px solid #2a2a32;
+.tiempo-box{
+  background:#181820;
+  padding:14px 8px;
+  border-radius:14px;
+  text-align:center;
+  border:1px solid #2b2b34;
 }
 
-.tiempo-box span {
-  font-size: 22px;
-  font-weight: 700;
+.tiempo-box span{
+  font-size:20px;
+  font-weight:700;
 }
 
-.tiempo-box small {
-  font-size: 12px;
-  color: #9ca3af;
+.tiempo-box small{
+  font-size:11px;
+  color:#9ca3af;
 }
 
-/* SERVICIO */
+/* SERVICIO + PAGO */
 
-.servicio-card {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.servicio-card{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
 }
 
 @media(min-width:480px){
-  .servicio-card {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  .servicio-card{flex-direction:row}
 }
 
-.servicio-left ul {
-  list-style: none;
-  line-height: 1.8;
-  color: #d1d5db;
+.servicio-left ul{
+  list-style:none;
+  line-height:1.8;
+  color:#d1d5db;
+  font-size:14px;
 }
 
-.servicio-right {
-  text-align: center;
+.servicio-right{
+  text-align:center;
 }
 
-/* PROGRESS */
+/* CIRCULO */
 
-.progress-container {
-  position: relative;
-  margin-bottom: 15px;
+.progress-container{
+  position:relative;
+  margin-bottom:10px;
 }
 
-.bg-circle {
-  fill: none;
-  stroke: #2c2c34;
-  stroke-width: 10;
+.bg-circle{
+  fill:none;
+  stroke:#2c2c34;
+  stroke-width:9;
 }
 
-.progress-circle {
-  fill: none;
-  stroke: #4ade80;
-  stroke-width: 10;
-  stroke-linecap: round;
-  transform: rotate(-90deg);
-  transform-origin: center;
-  transition: 1s ease;
+.progress-circle{
+  fill:none;
+  stroke:#4ade80;
+  stroke-width:9;
+  stroke-linecap:round;
+  transform:rotate(-90deg);
+  transform-origin:center;
 }
 
-.progress-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  font-size: 22px;
-  font-weight: 700;
+.progress-text{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:20px;
+  font-weight:700;
 }
 
-.estado-label {
-  margin-top: 10px;
-  font-weight: 600;
+.pago-detalle p{
+  font-size:13px;
+  color:#cbd5e1;
 }
 
-.estado-ok {
-  color: #4ade80;
+.estado-label{
+  margin-top:6px;
+  font-weight:600;
 }
 
-.estado-pendiente {
-  color: #facc15;
-}
+.estado-ok{color:#4ade80}
+.estado-pendiente{color:#facc15}
 
 /* EXTRAS */
 
-.extra-item {
-  background: #1c1c25;
-  border-radius: 16px;
-  padding: 15px;
-  margin-bottom: 15px;
-  border: 1px solid #2c2c34;
+.extra-item{
+  background:#181820;
+  border-radius:16px;
+  padding:14px;
+  margin-bottom:12px;
+  border:1px solid #2b2b34;
 }
 
-.extra-info h3 {
-  margin-bottom: 6px;
+.extra-info h3{font-size:15px;margin-bottom:4px}
+.extra-info p{font-size:12px;color:#9ca3af;margin-bottom:6px}
+
+.extra-precio{
+  font-weight:600;
+  margin-bottom:8px;
 }
 
-.extra-info p {
-  font-size: 13px;
-  color: #9ca3af;
-  margin-bottom: 10px;
-}
-
-.extra-precio {
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.whatsapp-btn {
-  display: block;
-  text-align: center;
-  background: linear-gradient(135deg,#c8a95c,#b38b3c);
-  padding: 10px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: black;
-  font-weight: 600;
+.whatsapp-btn{
+  display:block;
+  text-align:center;
+  background:linear-gradient(135deg,#d4af37,#b38b3c);
+  padding:9px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#000;
+  font-weight:600;
 }
 
 /* MAPA */
 
-.map-btn {
-  display: block;
-  margin-top: 12px;
-  text-align: center;
-  background: #1f2937;
-  padding: 10px;
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  border: 1px solid #2c2c34;
+.map-btn{
+  display:block;
+  margin-top:10px;
+  text-align:center;
+  background:#181820;
+  padding:10px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#fff;
+  border:1px solid #2b2b34;
 }
