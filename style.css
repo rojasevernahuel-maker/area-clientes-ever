@@ -1,134 +1,158 @@
-*{box-sizing:border-box;margin:0;padding:0}
-body{
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family:'Poppins',sans-serif;
-  background:#0c0c10;
-  color:#fff;
 }
+
+body{
+  background: radial-gradient(circle at top,#1b1b23,#0d0d12 70%);
+  color:white;
+}
+
+/* CONTENEDOR GENERAL */
 
 .evento-container{
   max-width:520px;
   margin:auto;
-  padding:18px;
+  padding:20px 16px 60px;
 }
 
-/* PORTADA */
+/* PORTADA HORIZONTAL */
 
 .portada{
   height:140px;
-  border-radius:22px;
+  border-radius:26px;
   overflow:hidden;
-  margin-bottom:18px;
+  margin-bottom:28px;
+  position:relative;
   background-size:cover;
   background-position:center;
-  position:relative;
+  box-shadow:0 25px 60px rgba(0,0,0,0.6);
 }
 
 .portada::after{
-  content:"";
+  content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+  background:linear-gradient(to top,rgba(0,0,0,0.85),rgba(0,0,0,0.2));
 }
 
 .portada-overlay{
   position:absolute;
-  bottom:15px;
-  left:18px;
+  bottom:18px;
+  left:22px;
   z-index:2;
 }
 
 .portada-overlay h1{
-  font-size:22px;
+  font-size:26px;
   font-weight:600;
-}
-
-/* CARDS */
-
-.card{
-  background:linear-gradient(160deg,#15151b,#101015);
-  border-radius:22px;
-  padding:18px;
-  margin-bottom:16px;
-  border:1px solid #26262f;
-  box-shadow:0 10px 35px rgba(0,0,0,.45);
-}
-
-.card h2{
-  color:#c8a95c;
-  font-size:16px;
-  margin-bottom:14px;
   letter-spacing:.5px;
 }
 
-/* CONTADOR */
+/* CARDS GRANDES TIPO PANEL */
+
+.card{
+  background:linear-gradient(145deg,#191922,#111117);
+  border-radius:26px;
+  padding:26px;
+  margin-bottom:26px;
+  border:1px solid #24242c;
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.55),
+    inset 0 0 40px rgba(255,255,255,0.02);
+}
+
+/* TITULOS */
+
+.card h2{
+  color:#c8a95c;
+  font-size:20px;
+  margin-bottom:22px;
+  font-weight:600;
+}
+
+/* CONTADOR MODERNO */
 
 .contador-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  gap:14px;
 }
 
 .tiempo-box{
-  background:#181820;
-  padding:14px 8px;
-  border-radius:14px;
+  background:#15151c;
+  border-radius:18px;
+  padding:18px 10px;
   text-align:center;
-  border:1px solid #2b2b34;
+  border:1px solid #2a2a32;
+  box-shadow:inset 0 0 25px rgba(255,255,255,0.03);
 }
 
 .tiempo-box span{
-  font-size:20px;
+  font-size:26px;
   font-weight:700;
 }
 
 .tiempo-box small{
-  font-size:11px;
   color:#9ca3af;
+  font-size:12px;
 }
 
-/* SERVICIO + PAGO */
+/* SERVICIO + PAGO LADO A LADO */
 
 .servicio-card{
   display:flex;
-  flex-direction:column;
-  gap:18px;
+  justify-content:space-between;
+  gap:30px;
+  align-items:flex-start;
 }
 
-@media(min-width:480px){
-  .servicio-card{flex-direction:row}
+.servicio-left{
+  flex:1.2;
+}
+
+.servicio-left h3{
+  font-size:18px;
+  margin-bottom:14px;
 }
 
 .servicio-left ul{
   list-style:none;
-  line-height:1.8;
+  line-height:2;
   color:#d1d5db;
   font-size:14px;
 }
 
 .servicio-right{
+  flex:1;
   text-align:center;
 }
 
-/* CIRCULO */
+/* CIRCULO DE PAGO */
 
 .progress-container{
   position:relative;
-  margin-bottom:10px;
+  width:160px;
+  height:160px;
+  margin:auto;
 }
 
 .bg-circle{
   fill:none;
   stroke:#2c2c34;
-  stroke-width:9;
+  stroke-width:12;
 }
 
 .progress-circle{
   fill:none;
   stroke:#4ade80;
-  stroke-width:9;
+  stroke-width:12;
   stroke-linecap:round;
   transform:rotate(-90deg);
   transform-origin:center;
+  transition:1s ease;
 }
 
 .progress-text{
@@ -136,49 +160,59 @@ body{
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-size:20px;
+  font-size:26px;
   font-weight:700;
 }
 
-.pago-detalle p{
-  font-size:13px;
-  color:#cbd5e1;
+/* DETALLE PAGO */
+
+.pago-detalle{
+  margin-top:16px;
+  font-size:14px;
+  line-height:1.8;
 }
 
 .estado-label{
-  margin-top:6px;
+  margin-top:8px;
   font-weight:600;
 }
 
-.estado-ok{color:#4ade80}
-.estado-pendiente{color:#facc15}
+.estado-ok{ color:#4ade80; }
+.estado-pendiente{ color:#facc15; }
 
 /* EXTRAS */
 
 .extra-item{
-  background:#181820;
-  border-radius:16px;
-  padding:14px;
-  margin-bottom:12px;
-  border:1px solid #2b2b34;
+  background:#15151c;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:16px;
+  border:1px solid #2a2a32;
 }
 
-.extra-info h3{font-size:15px;margin-bottom:4px}
-.extra-info p{font-size:12px;color:#9ca3af;margin-bottom:6px}
+.extra-info h3{
+  margin-bottom:6px;
+}
+
+.extra-info p{
+  font-size:13px;
+  color:#9ca3af;
+  margin-bottom:10px;
+}
 
 .extra-precio{
   font-weight:600;
-  margin-bottom:8px;
+  margin-bottom:12px;
 }
 
 .whatsapp-btn{
   display:block;
   text-align:center;
-  background:linear-gradient(135deg,#d4af37,#b38b3c);
-  padding:9px;
+  background:linear-gradient(135deg,#c8a95c,#b38b3c);
+  padding:10px;
   border-radius:12px;
   text-decoration:none;
-  color:#000;
+  color:black;
   font-weight:600;
 }
 
@@ -186,12 +220,21 @@ body{
 
 .map-btn{
   display:block;
-  margin-top:10px;
+  margin-top:12px;
   text-align:center;
-  background:#181820;
+  background:#1f2937;
   padding:10px;
   border-radius:12px;
   text-decoration:none;
-  color:#fff;
-  border:1px solid #2b2b34;
+  color:white;
+  border:1px solid #2c2c34;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:480px){
+  .servicio-card{
+    flex-direction:column;
+    align-items:center;
+  }
 }
