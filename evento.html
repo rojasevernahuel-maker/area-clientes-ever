@@ -20,7 +20,26 @@
   <!-- CONTADOR -->
   <div class="card contador">
     <h2>Cuenta regresiva</h2>
-    <p id="cuentaRegresiva"></p>
+
+    <div class="contador-grid">
+      <div class="tiempo-box">
+        <span id="dias">0</span>
+        <small>Días</small>
+      </div>
+      <div class="tiempo-box">
+        <span id="horas">0</span>
+        <small>Horas</small>
+      </div>
+      <div class="tiempo-box">
+        <span id="minutos">0</span>
+        <small>Minutos</small>
+      </div>
+      <div class="tiempo-box">
+        <span id="segundos">0</span>
+        <small>Segundos</small>
+      </div>
+    </div>
+
   </div>
 
   <!-- COMBO -->
@@ -54,6 +73,7 @@
 </div>
 
 <script src="script.js"></script>
+
 <script>
 
 const params = new URLSearchParams(window.location.search);
@@ -68,7 +88,6 @@ if (!clientes[codigo]) {
   document.getElementById("nombreEvento").textContent = cliente.nombre;
   document.getElementById("ubicacion").textContent = "Ubicación: " + cliente.ubicacion;
 
-  // Imagen portada (puedes cambiarla luego por una real)
   document.getElementById("portadaEvento").style.backgroundImage =
     "url('https://images.unsplash.com/photo-1529634898651-9f31a9b5b0c5')";
 
@@ -96,7 +115,6 @@ if (!clientes[codigo]) {
     estado.className = "estado-pendiente";
   }
 
-  // EXTRAS con WhatsApp
   const extrasContainer = document.getElementById("extrasContainer");
 
   cliente.extras.forEach(extra => {
@@ -121,26 +139,37 @@ if (!clientes[codigo]) {
     extrasContainer.appendChild(div);
   });
 
-  // CONTADOR
+  // ===========================
+  // CONTADOR TIEMPO REAL
+  // ===========================
+
   function actualizarContador() {
-    const fechaEvento = new Date(cliente.fecha);
-    const ahora = new Date();
+
+    const fechaEvento = new Date(cliente.fecha).getTime();
+    const ahora = new Date().getTime();
     const diferencia = fechaEvento - ahora;
 
     if (diferencia <= 0) {
-      document.getElementById("cuentaRegresiva").textContent = "¡Es hoy!";
+      document.getElementById("dias").innerText = 0;
+      document.getElementById("horas").innerText = 0;
+      document.getElementById("minutos").innerText = 0;
+      document.getElementById("segundos").innerText = 0;
       return;
     }
 
     const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
     const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
 
-    document.getElementById("cuentaRegresiva").textContent =
-      `${dias} días y ${horas} horas`;
+    document.getElementById("dias").innerText = dias;
+    document.getElementById("horas").innerText = horas;
+    document.getElementById("minutos").innerText = minutos;
+    document.getElementById("segundos").innerText = segundos;
   }
 
   actualizarContador();
-  setInterval(actualizarContador, 60000);
+  setInterval(actualizarContador, 1000);
 }
 
 </script>
