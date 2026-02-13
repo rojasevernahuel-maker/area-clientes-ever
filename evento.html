@@ -5,7 +5,6 @@
   <title>Panel del Evento</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font elegante -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -22,62 +21,45 @@
     </div>
   </div>
 
-  <!-- CUENTA REGRESIVA -->
-  <div class="card contador-card">
+  <!-- CONTADOR -->
+  <div class="card">
     <h2>Cuenta regresiva</h2>
-
     <div class="contador-grid">
-      <div class="tiempo-box">
-        <span id="dias">0</span>
-        <small>Días</small>
-      </div>
-      <div class="tiempo-box">
-        <span id="horas">0</span>
-        <small>Horas</small>
-      </div>
-      <div class="tiempo-box">
-        <span id="minutos">0</span>
-        <small>Minutos</small>
-      </div>
-      <div class="tiempo-box">
-        <span id="segundos">0</span>
-        <small>Segundos</small>
-      </div>
+      <div class="tiempo-box"><span id="dias">0</span><small>Días</small></div>
+      <div class="tiempo-box"><span id="horas">0</span><small>Horas</small></div>
+      <div class="tiempo-box"><span id="minutos">0</span><small>Minutos</small></div>
+      <div class="tiempo-box"><span id="segundos">0</span><small>Segundos</small></div>
     </div>
   </div>
 
   <!-- SERVICIO + PAGO INTEGRADO -->
   <div class="card servicio-card">
 
-    <h2>Servicio contratado</h2>
-    <h3 id="comboNombre" class="combo-titulo"></h3>
-
-    <div class="servicio-grid">
-
-      <!-- LISTA -->
-      <div>
-        <ul id="listaIncluye"></ul>
-      </div>
-
-      <!-- PAGO VISUAL -->
-      <div class="pago-box">
-        <div class="progress-circle">
-          <svg width="120" height="120">
-            <circle cx="60" cy="60" r="50" class="bg-circle"/>
-            <circle cx="60" cy="60" r="50" class="progress-circle-fill" id="progressCircle"/>
-          </svg>
-          <div class="progress-text" id="porcentajePago">0%</div>
-        </div>
-
-        <div class="resumen-pago">
-          <p>Total: $<span id="total"></span></p>
-          <p>Pagado: $<span id="pagado"></span></p>
-          <p>Saldo: $<span id="saldo"></span></p>
-          <div id="estadoPago" class="estado-badge"></div>
-        </div>
-      </div>
-
+    <div class="servicio-left">
+      <h2>Servicio contratado</h2>
+      <h3 id="comboNombre"></h3>
+      <ul id="listaIncluye"></ul>
     </div>
+
+    <div class="servicio-right">
+      <div class="progress-container">
+        <svg width="160" height="160">
+          <circle cx="80" cy="80" r="70" class="bg-circle"/>
+          <circle cx="80" cy="80" r="70" class="progress-circle" id="progressCircle"/>
+        </svg>
+        <div class="progress-text">
+          <span id="porcentajePago">0%</span>
+        </div>
+      </div>
+
+      <div class="pago-detalle">
+        <p>Total: $<span id="total"></span></p>
+        <p>Pagado: $<span id="pagado"></span></p>
+        <p>Saldo: $<span id="saldo"></span></p>
+        <div id="estadoPago" class="estado-label"></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- EXTRAS -->
@@ -89,13 +71,8 @@
   <!-- UBICACIÓN -->
   <div class="card">
     <h2>Ubicación del evento</h2>
-    <p class="ubicacion" id="ubicacion"></p>
-    <a 
-      class="mapa-btn"
-      href="https://maps.app.goo.gl/C2YfQ2MfvFFFH38VA"
-      target="_blank">
-      Ver en Google Maps
-    </a>
+    <p id="ubicacion"></p>
+    <a id="mapaBtn" class="map-btn" target="_blank">Ver en Google Maps</a>
   </div>
 
 </div>
@@ -113,12 +90,12 @@ if (!clientes[codigo]) {
   const cliente = clientes[codigo];
 
   document.getElementById("nombreEvento").textContent = cliente.nombre;
+  document.getElementById("comboNombre").textContent = cliente.combo;
   document.getElementById("ubicacion").textContent = cliente.ubicacion;
+  document.getElementById("mapaBtn").href = cliente.mapa;
 
   document.getElementById("portadaEvento").style.backgroundImage =
     "url('https://images.unsplash.com/photo-1529634898651-9f31a9b5b0c5')";
-
-  document.getElementById("comboNombre").textContent = cliente.combo;
 
   const lista = document.getElementById("listaIncluye");
   cliente.incluye.forEach(item => {
@@ -127,17 +104,18 @@ if (!clientes[codigo]) {
     lista.appendChild(li);
   });
 
-  document.getElementById("total").textContent = cliente.total.toLocaleString();
-  document.getElementById("pagado").textContent = cliente.pagado.toLocaleString();
+  const total = cliente.total;
+  const pagado = cliente.pagado;
+  const saldo = total - pagado;
+  const porcentaje = Math.round((pagado / total) * 100);
 
-  const saldo = cliente.total - cliente.pagado;
+  document.getElementById("total").textContent = total.toLocaleString();
+  document.getElementById("pagado").textContent = pagado.toLocaleString();
   document.getElementById("saldo").textContent = saldo.toLocaleString();
-
-  const porcentaje = Math.min((cliente.pagado / cliente.total) * 100, 100);
-  document.getElementById("porcentajePago").textContent = Math.round(porcentaje) + "%";
+  document.getElementById("porcentajePago").textContent = porcentaje + "%";
 
   const circle = document.getElementById("progressCircle");
-  const radius = 50;
+  const radius = 70;
   const circumference = 2 * Math.PI * radius;
   circle.style.strokeDasharray = circumference;
   circle.style.strokeDashoffset = circumference - (porcentaje / 100) * circumference;
@@ -151,29 +129,30 @@ if (!clientes[codigo]) {
     estado.classList.add("estado-pendiente");
   }
 
-  // CONTADOR
-  function actualizarContador() {
-    const fechaEvento = new Date(cliente.fecha).getTime();
-    const ahora = new Date().getTime();
-    const diferencia = fechaEvento - ahora;
+  const extrasContainer = document.getElementById("extrasContainer");
 
-    if (diferencia <= 0) return;
+  cliente.extras.forEach(extra => {
+    const div = document.createElement("div");
+    div.classList.add("extra-item");
 
-    document.getElementById("dias").innerText =
-      Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const mensaje = encodeURIComponent(
+      `Hola Ever! Quiero agregar el servicio extra: ${extra.nombre} para el evento ${cliente.nombre}`
+    );
 
-    document.getElementById("horas").innerText =
-      Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-
-    document.getElementById("minutos").innerText =
-      Math.floor((diferencia / (1000 * 60)) % 60);
-
-    document.getElementById("segundos").innerText =
-      Math.floor((diferencia / 1000) % 60);
-  }
-
-  actualizarContador();
-  setInterval(actualizarContador, 1000);
+    div.innerHTML = `
+      <div class="extra-info">
+        <h3>${extra.nombre}</h3>
+        <p>${extra.descripcion}</p>
+      </div>
+      <div class="extra-precio">$${extra.precio.toLocaleString()}</div>
+      <a class="whatsapp-btn"
+         href="https://wa.me/5493813920039?text=${mensaje}"
+         target="_blank">
+         Solicitar
+      </a>
+    `;
+    extrasContainer.appendChild(div);
+  });
 
 }
 </script>
