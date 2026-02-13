@@ -37,3 +37,40 @@ button {
   color: red;
   margin-top: 10px;
 }
+
+.evento-container {
+  padding: 20px;
+}
+
+.card {
+  background: #1c1c1c;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.contador {
+  background: #222;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.extra-item {
+  background: #2a2a2a;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.extra-item button {
+  background: gold;
+  border: none;
+  padding: 8px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
