@@ -1,86 +1,212 @@
-body {
+/* RESET */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #111;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 0;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f0f12;
+  color: #ffffff;
+}
+
+/* ---------------- LOGIN ---------------- */
+
 .login-container {
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px;
+  max-width: 420px;
+  margin: auto;
+}
+
+.login-container h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.subtitulo {
+  color: #9ca3af;
+  margin-bottom: 25px;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  margin-top: 15px;
-  border: none;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #2a2a30;
+  background: #1a1a1f;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #c8a95c;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background: gold;
+  padding: 14px;
+  border-radius: 12px;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  background: linear-gradient(135deg, #c8a95c, #b38b3c);
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
 }
 
 #error {
-  color: red;
   margin-top: 10px;
+  color: #ff6b6b;
+  font-size: 14px;
 }
+
+/* ---------------- EVENTO ---------------- */
 
 .evento-container {
   padding: 20px;
+  max-width: 500px;
+  margin: auto;
 }
+
+/* Portada */
+
+.portada {
+  position: relative;
+  height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+.portada-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  display: flex;
+  align-items: flex-end;
+  padding: 15px;
+}
+
+.portada-overlay h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Cards */
 
 .card {
-  background: #1c1c1c;
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 10px;
+  background: #17171c;
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  border: 1px solid #24242b;
 }
+
+.card h2 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #c8a95c;
+  font-weight: 600;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.card ul {
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.card ul li {
+  margin-bottom: 6px;
+  color: #d1d5db;
+}
+
+/* Contador */
 
 .contador {
-  background: #222;
-  padding: 15px;
-  margin-top: 15px;
-  border-radius: 10px;
   text-align: center;
+  font-size: 15px;
 }
+
+#cuentaRegresiva {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+/* Pago */
+
+.estado-ok {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+.estado-pendiente {
+  color: #facc15;
+  font-weight: 600;
+}
+
+/* Extras */
 
 .extra-item {
-  background: #2a2a2a;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 8px;
+  background: #1f1f25;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #2c2c33;
 }
 
-.extra-item button {
-  background: gold;
-  border: none;
-  padding: 8px;
+.extra-item h3 {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.extra-item p {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.extra-item strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.whatsapp-btn {
+  display: block;
   width: 100%;
-  border-radius: 6px;
-  margin-top: 8px;
-  font-weight: bold;
+  text-align: center;
+  background: #25d366;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
 }
 
-.subtitulo {
-  color: #bbb;
-  margin-bottom: 20px;
-}
+/* Ubicación */
 
-.login-container h1 {
-  font-size: 26px;
-  margin-bottom: 5px;
+.ubicacion {
+  font-size: 14px;
+  color: #9ca3af;
 }
-
