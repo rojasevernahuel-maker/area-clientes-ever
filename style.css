@@ -1,4 +1,3 @@
-/* RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,132 +5,101 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: #0f0f12;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1c1c24, #0e0e13);
   color: #ffffff;
 }
 
-/* ---------------- LOGIN ---------------- */
-
-.login-container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 25px;
-  max-width: 420px;
-  margin: auto;
-}
-
-.login-container h1 {
-  font-size: 28px;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.subtitulo {
-  color: #9ca3af;
-  margin-bottom: 25px;
-}
-
-input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid #2a2a30;
-  background: #1a1a1f;
-  color: white;
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-input:focus {
-  outline: none;
-  border: 1px solid #c8a95c;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(135deg, #c8a95c, #b38b3c);
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-#error {
-  margin-top: 10px;
-  color: #ff6b6b;
-  font-size: 14px;
-}
-
-/* ---------------- EVENTO ---------------- */
-
+/* CONTENEDOR */
 .evento-container {
-  padding: 20px;
-  max-width: 500px;
+  max-width: 480px;
   margin: auto;
+  padding: 20px;
 }
 
-/* Portada */
-
+/* PORTADA */
 .portada {
-  position: relative;
-  height: 200px;
-  border-radius: 18px;
+  height: 220px;
+  border-radius: 20px;
   overflow: hidden;
   margin-bottom: 20px;
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 
 .portada-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
   display: flex;
   align-items: flex-end;
-  padding: 15px;
+  padding: 20px;
 }
 
 .portada-overlay h1 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 600;
 }
 
-/* Cards */
-
+/* CARDS */
 .card {
-  background: #17171c;
-  padding: 18px;
-  border-radius: 16px;
-  margin-bottom: 16px;
-  border: 1px solid #24242b;
+  background: #15151c;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 18px;
+  border: 1px solid #24242c;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 .card h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #d4af37;
+}
+
+.combo-titulo {
   font-size: 16px;
-  margin-bottom: 12px;
-  color: #c8a95c;
-  font-weight: 600;
+  margin-bottom: 15px;
 }
 
-.card h3 {
-  margin-bottom: 10px;
-  font-size: 15px;
+/* CONTADOR */
+.contador-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
+.tiempo-box {
+  background: #1e1e27;
+  padding: 15px 5px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid #2a2a33;
+}
+
+.tiempo-box span {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.tiempo-box small {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+/* SERVICIO GRID */
+.servicio-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* LISTA */
 .card ul {
   list-style: none;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .card ul li {
@@ -139,103 +107,96 @@ button:hover {
   color: #d1d5db;
 }
 
-/* Contador */
-
-.contador {
+/* PAGO */
+.pago-box {
   text-align: center;
-  font-size: 15px;
 }
 
-#cuentaRegresiva {
-  font-size: 18px;
+.progress-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px;
+}
+
+.bg-circle {
+  fill: none;
+  stroke: #2a2a33;
+  stroke-width: 10;
+}
+
+.progress-circle-fill {
+  fill: none;
+  stroke: #4ade80;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-weight: 600;
-  margin-top: 6px;
+  font-size: 18px;
 }
 
-/* Pago */
+.resumen-pago p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.estado-badge {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
 
 .estado-ok {
+  background: rgba(74, 222, 128, 0.15);
   color: #4ade80;
-  font-weight: 600;
 }
 
 .estado-pendiente {
+  background: rgba(250, 204, 21, 0.15);
   color: #facc15;
-  font-weight: 600;
 }
 
-/* Extras */
-
+/* EXTRAS */
 .extra-item {
-  background: #1f1f25;
-  padding: 14px;
-  border-radius: 12px;
+  background: #1e1e27;
+  padding: 15px;
+  border-radius: 14px;
   margin-bottom: 12px;
-  border: 1px solid #2c2c33;
-}
-
-.extra-item h3 {
-  font-size: 15px;
-  margin-bottom: 6px;
-}
-
-.extra-item p {
-  font-size: 13px;
-  color: #9ca3af;
-  margin-bottom: 6px;
-}
-
-.extra-item strong {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 14px;
+  border: 1px solid #2a2a33;
 }
 
 .whatsapp-btn {
   display: block;
-  width: 100%;
+  margin-top: 10px;
   text-align: center;
-  background: #25d366;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d4af37, #b8902f);
+  text-decoration: none;
+  font-weight: 600;
+  color: black;
+}
+
+/* MAPA */
+.mapa-btn {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #d4af37, #b8902f);
+  color: black;
   font-weight: 600;
   text-decoration: none;
-  color: white;
-  font-size: 14px;
-}
-
-/* Ubicación */
-
-.ubicacion {
-  font-size: 14px;
-  color: #9ca3af;
-}
-
-/* ---------------- CONTADOR BLOQUES ---------------- */
-
-.contador-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.tiempo-box {
-  background: #1f1f25;
-  padding: 14px 6px;
-  border-radius: 12px;
-  border: 1px solid #2c2c33;
-  text-align: center;
-}
-
-.tiempo-box span {
-  display: block;
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 4px;
-}
-
-.tiempo-box small {
-  font-size: 11px;
-  color: #9ca3af;
 }
