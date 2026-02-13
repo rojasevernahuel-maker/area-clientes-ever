@@ -8,10 +8,122 @@
 </head>
 <body>
 
-  <div class="login-container">
-    <h1>Bienvenido a tu evento</h1>
-    <p>Próximamente verás aquí los detalles completos.</p>
+<div class="evento-container">
+
+  <h1 id="nombreEvento"></h1>
+  <p id="fechaEvento"></p>
+
+  <div class="contador">
+    <h2>Faltan para tu evento</h2>
+    <p id="cuentaRegresiva"></p>
   </div>
+
+  <div class="card">
+    <h2>Tu Servicio Contratado</h2>
+    <h3 id="comboNombre"></h3>
+    <ul id="listaIncluye"></ul>
+  </div>
+
+  <div class="card">
+    <h2>Estado del Pago</h2>
+    <p>Total: $<span id="total"></span></p>
+    <p>Pagado: $<span id="pagado"></span></p>
+    <p>Saldo: $<span id="saldo"></span></p>
+    <p id="estadoPago"></p>
+  </div>
+
+  <div class="card">
+    <h2>Servicios Extras</h2>
+    <div id="extrasContainer"></div>
+  </div>
+
+  <div class="card">
+    <h2>Información del Evento</h2>
+    <p id="ubicacion"></p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const codigo = params.get("codigo");
+
+if (!clientes[codigo]) {
+  document.body.innerHTML = "<h2>Código inválido</h2>";
+} else {
+
+  const cliente = clientes[codigo];
+
+  document.getElementById("nombreEvento").textContent = cliente.nombre;
+  document.getElementById("fechaEvento").textContent = "Fecha: " + cliente.fecha;
+  document.getElementById("comboNombre").textContent = cliente.combo;
+  document.getElementById("ubicacion").textContent = "Ubicación: " + cliente.ubicacion;
+
+  const lista = document.getElementById("listaIncluye");
+  cliente.incluye.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    lista.appendChild(li);
+  });
+
+  document.getElementById("total").textContent = cliente.total.toLocaleString();
+  document.getElementById("pagado").textContent = cliente.pagado.toLocaleString();
+
+  const saldo = cliente.total - cliente.pagado;
+  document.getElementById("saldo").textContent = saldo.toLocaleString();
+
+  const estado = document.getElementById("estadoPago");
+  if (saldo <= 0) {
+    estado.textContent = "✅ Pago Completo";
+    estado.style.color = "lightgreen";
+  } else {
+    estado.textContent = "⚠️ Pago Pendiente";
+    estado.style.color = "orange";
+  }
+
+  const extrasContainer = document.getElementById("extrasContainer");
+
+  cliente.extras.forEach(extra => {
+    const div = document.createElement("div");
+    div.classList.add("extra-item");
+
+    div.innerHTML = `
+      <h3>${extra.nombre}</h3>
+      <p>${extra.descripcion}</p>
+      <p><strong>$${extra.precio.toLocaleString()}</strong></p>
+      <button onclick="this.innerText='✔ Solicitado'; this.disabled=true;">
+        Agregar a mi evento
+      </button>
+    `;
+
+    extrasContainer.appendChild(div);
+  });
+
+  function actualizarContador() {
+    const fechaEvento = new Date(cliente.fecha);
+    const ahora = new Date();
+    const diferencia = fechaEvento - ahora;
+
+    if (diferencia <= 0) {
+      document.getElementById("cuentaRegresiva").textContent = "¡Es hoy!";
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+
+    document.getElementById("cuentaRegresiva").textContent =
+      `${dias} días ${horas} hs ${minutos} min`;
+  }
+
+  actualizarContador();
+  setInterval(actualizarContador, 60000);
+}
+
+</script>
 
 </body>
 </html>
