@@ -3,6 +3,7 @@ const clientes = {
     nombre: "XV - María",
     fecha: "2026-02-14T22:00:00-03:00",
     ubicacion: "La Florida",
+    mapa: "https://maps.app.goo.gl/C2YfQ2MfvFFFH38VA",
     combo: "Álbum grande - 100 fotos",
     incluye: [
       "📸 Todas las fotos digitales",
