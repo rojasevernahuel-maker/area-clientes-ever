@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Evento - Ever Fotografías</title>
+  <title>Panel del Evento</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,36 +10,45 @@
 
 <div class="evento-container">
 
-  <h1 id="nombreEvento"></h1>
-  <p id="fechaEvento"></p>
+  <!-- PORTADA -->
+  <div class="portada" id="portadaEvento">
+    <div class="portada-overlay">
+      <h1 id="nombreEvento"></h1>
+    </div>
+  </div>
 
-  <div class="contador">
-    <h2>Faltan para tu evento</h2>
+  <!-- CONTADOR -->
+  <div class="card contador">
+    <h2>Cuenta regresiva</h2>
     <p id="cuentaRegresiva"></p>
   </div>
 
+  <!-- COMBO -->
   <div class="card">
-    <h2>Tu Servicio Contratado</h2>
+    <h2>Servicio contratado</h2>
     <h3 id="comboNombre"></h3>
     <ul id="listaIncluye"></ul>
   </div>
 
+  <!-- PAGO -->
   <div class="card">
-    <h2>Estado del Pago</h2>
+    <h2>Estado del pago</h2>
     <p>Total: $<span id="total"></span></p>
     <p>Pagado: $<span id="pagado"></span></p>
     <p>Saldo: $<span id="saldo"></span></p>
     <p id="estadoPago"></p>
   </div>
 
+  <!-- EXTRAS -->
   <div class="card">
-    <h2>Servicios Extras</h2>
+    <h2>Servicios extras</h2>
     <div id="extrasContainer"></div>
   </div>
 
+  <!-- UBICACIÓN -->
   <div class="card">
-    <h2>Información del Evento</h2>
-    <p id="ubicacion"></p>
+    <h2>Información</h2>
+    <p class="ubicacion" id="ubicacion"></p>
   </div>
 
 </div>
@@ -51,15 +60,19 @@ const params = new URLSearchParams(window.location.search);
 const codigo = params.get("codigo");
 
 if (!clientes[codigo]) {
-  document.body.innerHTML = "<h2>Código inválido</h2>";
+  document.body.innerHTML = "<h2 style='padding:20px'>Código inválido</h2>";
 } else {
 
   const cliente = clientes[codigo];
 
   document.getElementById("nombreEvento").textContent = cliente.nombre;
-  document.getElementById("fechaEvento").textContent = "Fecha: " + cliente.fecha;
-  document.getElementById("comboNombre").textContent = cliente.combo;
   document.getElementById("ubicacion").textContent = "Ubicación: " + cliente.ubicacion;
+
+  // Imagen portada (puedes cambiarla luego por una real)
+  document.getElementById("portadaEvento").style.backgroundImage =
+    "url('https://images.unsplash.com/photo-1529634898651-9f31a9b5b0c5')";
+
+  document.getElementById("comboNombre").textContent = cliente.combo;
 
   const lista = document.getElementById("listaIncluye");
   cliente.incluye.forEach(item => {
@@ -76,31 +89,39 @@ if (!clientes[codigo]) {
 
   const estado = document.getElementById("estadoPago");
   if (saldo <= 0) {
-    estado.textContent = "✅ Pago Completo";
-    estado.style.color = "lightgreen";
+    estado.textContent = "Pago completo ✔";
+    estado.className = "estado-ok";
   } else {
-    estado.textContent = "⚠️ Pago Pendiente";
-    estado.style.color = "orange";
+    estado.textContent = "Pago pendiente";
+    estado.className = "estado-pendiente";
   }
 
+  // EXTRAS con WhatsApp
   const extrasContainer = document.getElementById("extrasContainer");
 
   cliente.extras.forEach(extra => {
     const div = document.createElement("div");
     div.classList.add("extra-item");
 
+    const mensaje = encodeURIComponent(
+      `Hola Ever! Quiero agregar el servicio extra: ${extra.nombre} para el evento ${cliente.nombre}`
+    );
+
     div.innerHTML = `
       <h3>${extra.nombre}</h3>
       <p>${extra.descripcion}</p>
-      <p><strong>$${extra.precio.toLocaleString()}</strong></p>
-      <button onclick="this.innerText='✔ Solicitado'; this.disabled=true;">
-        Agregar a mi evento
-      </button>
+      <strong>$${extra.precio.toLocaleString()}</strong>
+      <a class="whatsapp-btn" 
+         href="https://wa.me/5493813920039?text=${mensaje}" 
+         target="_blank">
+         Solicitar por WhatsApp
+      </a>
     `;
 
     extrasContainer.appendChild(div);
   });
 
+  // CONTADOR
   function actualizarContador() {
     const fechaEvento = new Date(cliente.fecha);
     const ahora = new Date();
@@ -113,10 +134,9 @@ if (!clientes[codigo]) {
 
     const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
     const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
 
     document.getElementById("cuentaRegresiva").textContent =
-      `${dias} días ${horas} hs ${minutos} min`;
+      `${dias} días y ${horas} horas`;
   }
 
   actualizarContador();
