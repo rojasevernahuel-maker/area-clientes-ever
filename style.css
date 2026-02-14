@@ -5,6 +5,10 @@
   font-family:'Poppins',sans-serif;
 }
 
+html, body{
+  overflow-x:hidden; /* 🔥 elimina movimiento lateral */
+}
+
 body{
   background: radial-gradient(circle at top,#1b1b23,#0d0d12 70%);
   color:white;
@@ -18,7 +22,7 @@ body{
   padding:20px 16px 60px;
 }
 
-/* PORTADA HORIZONTAL */
+/* PORTADA */
 
 .portada{
   height:140px;
@@ -48,23 +52,20 @@ body{
 .portada-overlay h1{
   font-size:26px;
   font-weight:600;
-  letter-spacing:.5px;
 }
 
-/* CARDS GRANDES TIPO PANEL */
+/* CARDS */
 
 .card{
   background:linear-gradient(145deg,#191922,#111117);
   border-radius:26px;
-  padding:26px;
+  padding:24px;
   margin-bottom:26px;
   border:1px solid #24242c;
   box-shadow:
     0 15px 40px rgba(0,0,0,0.55),
     inset 0 0 40px rgba(255,255,255,0.02);
 }
-
-/* TITULOS */
 
 .card h2{
   color:#c8a95c;
@@ -73,41 +74,41 @@ body{
   font-weight:600;
 }
 
-/* CONTADOR MODERNO */
+/* CONTADOR */
 
 .contador-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:14px;
+  gap:10px;
 }
 
 .tiempo-box{
   background:#15151c;
   border-radius:18px;
-  padding:18px 10px;
+  padding:16px 8px;
   text-align:center;
   border:1px solid #2a2a32;
-  box-shadow:inset 0 0 25px rgba(255,255,255,0.03);
 }
 
 .tiempo-box span{
-  font-size:26px;
+  font-size:22px;
   font-weight:700;
 }
 
 .tiempo-box small{
+  display:block;
+  margin-top:4px;
   color:#9ca3af;
-  font-size:12px;
+  font-size:11px;
 }
 
-/* SERVICIO + PAGO LADO A LADO */
+/* SERVICIO */
 
 .servicio-card{
   display:flex;
   justify-content:space-between;
-  gap:20px;
   align-items:center;
-  flex-wrap:nowrap; /* 🔥 evita que se vaya abajo */
+  gap:18px;
 }
 
 .servicio-left{
@@ -122,64 +123,68 @@ body{
 
 .servicio-left ul{
   list-style:none;
-  line-height:2;
+  line-height:1.8;
   color:#d1d5db;
   font-size:14px;
 }
 
 .servicio-right{
-  width:150px; /* ancho fijo para que siempre quede al costado */
+  width:130px;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
   text-align:center;
 }
 
-/* CIRCULO DE PAGO */
+/* CIRCULO PERFECTAMENTE CENTRADO */
 
 .progress-container{
   position:relative;
-  width:140px;
-  height:140px;
-  margin:auto;
+  width:120px;
+  height:120px;
+}
+
+.progress-container svg{
+  width:120px;
+  height:120px;
 }
 
 .bg-circle{
   fill:none;
   stroke:#2c2c34;
-  stroke-width:12;
+  stroke-width:10;
 }
 
 .progress-circle{
   fill:none;
   stroke:#4ade80;
-  stroke-width:12;
+  stroke-width:10;
   stroke-linecap:round;
   transform:rotate(-90deg);
-  transform-origin:center;
+  transform-origin:50% 50%;
   transition:1s ease;
 }
 
 .progress-text{
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-size:22px;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
   font-weight:700;
 }
 
 /* DETALLE PAGO */
 
 .pago-detalle{
-  margin-top:14px;
+  margin-top:12px;
   font-size:13px;
   line-height:1.6;
 }
 
 .estado-label{
-  margin-top:8px;
+  margin-top:6px;
   font-weight:600;
 }
 
@@ -191,8 +196,8 @@ body{
 .extra-item{
   background:#15151c;
   border-radius:18px;
-  padding:18px;
-  margin-bottom:16px;
+  padding:16px;
+  margin-bottom:14px;
   border:1px solid #2a2a32;
 }
 
@@ -203,12 +208,12 @@ body{
 .extra-info p{
   font-size:13px;
   color:#9ca3af;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 
 .extra-precio{
   font-weight:600;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .whatsapp-btn{
@@ -236,24 +241,17 @@ body{
   border:1px solid #2c2c34;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE REAL */
 
 @media(max-width:480px){
+
+  .contador-grid{
+    grid-template-columns:repeat(4,1fr);
+  }
+
   .servicio-card{
-    flex-direction:row; /* 🔥 ahora se mantiene horizontal */
+    flex-direction:row;
     align-items:center;
   }
 
-  .servicio-right{
-    width:120px;
-  }
-
-  .progress-container{
-    width:110px;
-    height:110px;
-  }
-
-  .progress-text{
-    font-size:18px;
-  }
 }
