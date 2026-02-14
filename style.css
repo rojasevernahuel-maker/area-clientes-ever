@@ -128,12 +128,14 @@ body{
   font-size:14px;
 }
 
-.servicio-right{
-  width:130px;
+.servicio-right {
+  width:150px;
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
   text-align:center;
+  gap:6px;
 }
 
 /* CIRCULO PERFECTAMENTE CENTRADO */
@@ -177,10 +179,11 @@ body{
 
 /* DETALLE PAGO */
 
-.pago-detalle{
-  margin-top:12px;
+.pago-detalle {
+  margin-top:8px;
   font-size:13px;
   line-height:1.6;
+  width:100%;
 }
 
 .estado-label{
@@ -253,5 +256,12 @@ body{
     flex-direction:row;
     align-items:center;
   }
+
+/* Alinea bien el texto bajo el círculo */
+.servicio-right p {
+  margin:0;
+  font-size:13px;
+  color:#e0e0e0;
+}
 
 }
