@@ -37,7 +37,7 @@ if (!clientes[codigo]) {
   document.getElementById("porcentajePago").textContent = porcentaje + "%";
 
   const circle = document.getElementById("progressCircle");
-  const radius = 60;
+  const radius = 50;
   const circumference = 2 * Math.PI * radius;
 
   circle.style.strokeDasharray = circumference;
