@@ -105,12 +105,14 @@ body{
 .servicio-card{
   display:flex;
   justify-content:space-between;
-  gap:30px;
-  align-items:flex-start;
+  gap:20px;
+  align-items:center;
+  flex-wrap:nowrap; /* 🔥 evita que se vaya abajo */
 }
 
 .servicio-left{
-  flex:1.2;
+  flex:1;
+  min-width:0;
 }
 
 .servicio-left h3{
@@ -126,7 +128,11 @@ body{
 }
 
 .servicio-right{
-  flex:1;
+  width:150px; /* ancho fijo para que siempre quede al costado */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
   text-align:center;
 }
 
@@ -134,8 +140,8 @@ body{
 
 .progress-container{
   position:relative;
-  width:160px;
-  height:160px;
+  width:140px;
+  height:140px;
   margin:auto;
 }
 
@@ -160,16 +166,16 @@ body{
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-size:26px;
+  font-size:22px;
   font-weight:700;
 }
 
 /* DETALLE PAGO */
 
 .pago-detalle{
-  margin-top:16px;
-  font-size:14px;
-  line-height:1.8;
+  margin-top:14px;
+  font-size:13px;
+  line-height:1.6;
 }
 
 .estado-label{
@@ -234,7 +240,20 @@ body{
 
 @media(max-width:480px){
   .servicio-card{
-    flex-direction:column;
+    flex-direction:row; /* 🔥 ahora se mantiene horizontal */
     align-items:center;
+  }
+
+  .servicio-right{
+    width:120px;
+  }
+
+  .progress-container{
+    width:110px;
+    height:110px;
+  }
+
+  .progress-text{
+    font-size:18px;
   }
 }
