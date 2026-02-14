@@ -6,7 +6,7 @@
 }
 
 html, body{
-  overflow-x:hidden; /* 🔥 elimina movimiento lateral */
+  overflow-x:hidden;
 }
 
 body{
@@ -72,6 +72,7 @@ body{
   font-size:20px;
   margin-bottom:22px;
   font-weight:600;
+  white-space:nowrap; /* 🔥 ahora queda en una sola línea */
 }
 
 /* CONTADOR */
@@ -128,8 +129,8 @@ body{
   font-size:14px;
 }
 
-.servicio-right {
-  width:150px;
+.servicio-right{
+  width:160px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -138,32 +139,33 @@ body{
   gap:6px;
 }
 
-/* CIRCULO PERFECTAMENTE CENTRADO */
+/* 🔥 CÍRCULO DEFINITIVO PERFECTO */
 
 .progress-container{
   position:relative;
-  width:140px;   /* antes 120 */
-  height:140px;  /* antes 120 */
+  width:150px;
+  height:150px;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
 .progress-container svg{
-  width:140px;   /* antes 120 */
-  height:140px;  /* antes 120 */
+  width:150px;
+  height:150px;
+  overflow:visible; /* evita cortes */
 }
 
 .bg-circle{
   fill:none;
   stroke:#2c2c34;
-  stroke-width:10;
+  stroke-width:12;
 }
 
 .progress-circle{
   fill:none;
   stroke:#4ade80;
-  stroke-width:10;
+  stroke-width:12;
   stroke-linecap:round;
   transform:rotate(-90deg);
   transform-origin:50% 50%;
@@ -182,7 +184,7 @@ body{
 
 /* DETALLE PAGO */
 
-.pago-detalle {
+.pago-detalle{
   margin-top:8px;
   font-size:13px;
   line-height:1.6;
@@ -247,7 +249,7 @@ body{
   border:1px solid #2c2c34;
 }
 
-/* RESPONSIVE REAL */
+/* RESPONSIVE */
 
 @media(max-width:480px){
 
@@ -260,11 +262,10 @@ body{
     align-items:center;
   }
 
-/* Alinea bien el texto bajo el círculo */
-.servicio-right p {
-  margin:0;
-  font-size:13px;
-  color:#e0e0e0;
-}
+  .servicio-right p{
+    margin:0;
+    font-size:13px;
+    color:#e0e0e0;
+  }
 
 }
