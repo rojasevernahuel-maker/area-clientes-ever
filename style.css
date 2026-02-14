@@ -142,13 +142,16 @@ body{
 
 .progress-container{
   position:relative;
-  width:120px;
-  height:120px;
+  width:140px;   /* antes 120 */
+  height:140px;  /* antes 120 */
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .progress-container svg{
-  width:120px;
-  height:120px;
+  width:140px;   /* antes 120 */
+  height:140px;  /* antes 120 */
 }
 
 .bg-circle{
