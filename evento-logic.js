@@ -37,12 +37,13 @@ if (!clientes[codigo]) {
   document.getElementById("porcentajePago").textContent = porcentaje + "%";
 
   const circle = document.getElementById("progressCircle");
-  const radius = 65;
+  const radius = 60;
   const circumference = 2 * Math.PI * radius;
 
   circle.style.strokeDasharray = circumference;
   circle.style.strokeDashoffset =
     circumference - (porcentaje / 100) * circumference;
+
 
   const estado = document.getElementById("estadoPago");
   if (saldo <= 0) {
