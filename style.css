@@ -72,7 +72,7 @@ body{
   font-size:20px;
   margin-bottom:22px;
   font-weight:600;
-  white-space:nowrap; /* 🔥 ahora queda en una sola línea */
+  white-space:nowrap;
 }
 
 /* CONTADOR */
@@ -108,8 +108,8 @@ body{
 .servicio-card{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  gap:18px;
+  align-items:flex-start; /* 🔥 mejor alineación */
+  gap:20px;
 }
 
 .servicio-left{
@@ -118,54 +118,61 @@ body{
 }
 
 .servicio-left h3{
-  font-size:18px;
-  margin-bottom:14px;
+  font-size:19px;
+  margin-bottom:16px;
 }
+
+/* 🔥 LISTA MEJORADA */
 
 .servicio-left ul{
   list-style:none;
-  line-height:1.8;
-  color:#d1d5db;
-  font-size:14px;
+  color:#e5e7eb;
+  font-size:15px;      /* más grande */
+  line-height:1.9;     /* más aire */
+  display:flex;
+  flex-direction:column;
+  gap:8px;             /* separación real entre ítems */
 }
 
+/* COLUMNA DERECHA MÁS COMPACTA */
+
 .servicio-right{
-  width:160px;
+  width:130px; /* antes 160 */
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  gap:6px;
+  gap:8px;
 }
 
-/* 🔥 CÍRCULO DEFINITIVO PERFECTO */
+/* 🔥 CÍRCULO REDIMENSIONADO EQUILIBRADO */
 
 .progress-container{
   position:relative;
-  width:150px;
-  height:150px;
+  width:120px;
+  height:120px;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
 .progress-container svg{
-  width:150px;
-  height:150px;
-  overflow:visible; /* evita cortes */
+  width:120px;
+  height:120px;
+  overflow:visible;
 }
 
 .bg-circle{
   fill:none;
   stroke:#2c2c34;
-  stroke-width:12;
+  stroke-width:10;
 }
 
 .progress-circle{
   fill:none;
   stroke:#4ade80;
-  stroke-width:12;
+  stroke-width:10;
   stroke-linecap:round;
   transform:rotate(-90deg);
   transform-origin:50% 50%;
@@ -178,14 +185,14 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:20px;
+  font-size:18px;
   font-weight:700;
 }
 
 /* DETALLE PAGO */
 
 .pago-detalle{
-  margin-top:8px;
+  margin-top:10px;
   font-size:13px;
   line-height:1.6;
   width:100%;
@@ -259,7 +266,7 @@ body{
 
   .servicio-card{
     flex-direction:row;
-    align-items:center;
+    align-items:flex-start;
   }
 
   .servicio-right p{
