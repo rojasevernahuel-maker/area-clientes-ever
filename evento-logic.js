@@ -57,7 +57,7 @@ document.getElementById("porcentajePago").textContent = porcentaje + "%";
 
 
   const estado = document.getElementById("estadoPago");
-  if (saldo <= 0) {
+  if (porcentaje === 100) {
     estado.textContent = "Pago completo";
     estado.classList.add("estado-ok");
   } else {
