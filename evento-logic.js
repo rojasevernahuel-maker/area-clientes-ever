@@ -100,3 +100,33 @@ if (!clientes[codigo]) {
   }, 1000);
 
 }
+
+/* ========================= */
+/* Carousel dots dinámicos */
+/* ========================= */
+
+const track = document.querySelector(".servicio-track");
+const dots = document.querySelectorAll(".carousel-dots span");
+
+if(track){
+
+  track.addEventListener("scroll", () => {
+
+    const scrollPosition = track.scrollLeft;
+    const cardWidth = track.offsetWidth;
+
+    const index = Math.round(scrollPosition / cardWidth);
+
+    dots.forEach(dot => {
+      dot.style.background = "#444";
+      dot.style.opacity = "0.5";
+    });
+
+    if(dots[index]){
+      dots[index].style.background = "#c8a95c";
+      dots[index].style.opacity = "1";
+    }
+
+  });
+
+}
