@@ -17,25 +17,22 @@
     </div>
   </div>
 
-  <div class="card">
-    <h2>Cuenta regresiva</h2>
-    <div class="contador-grid">
-      <div class="tiempo-box"><span id="dias">0</span><small>Días</small></div>
-      <div class="tiempo-box"><span id="horas">0</span><small>Horas</small></div>
-      <div class="tiempo-box"><span id="minutos">0</span><small>Minutos</small></div>
-      <div class="tiempo-box"><span id="segundos">0</span><small>Segundos</small></div>
-    </div>
-  </div>
+<div class="servicio-carousel">
 
-  <div class="card servicio-card">
+  <div class="servicio-track">
 
-    <div class="servicio-left">
+    <!-- CARD 1 -->
+    <div class="card servicio-slide">
       <h2>Servicio contratado</h2>
       <h3 id="comboNombre"></h3>
       <ul id="listaIncluye"></ul>
     </div>
 
-    <div class="servicio-right">
+    <!-- CARD 2 -->
+    <div class="card servicio-slide pago-slide">
+
+      <h2>Estado de pago</h2>
+
       <div class="progress-container">
         <svg viewBox="0 0 150 150">
           <circle cx="75" cy="75" r="50" class="bg-circle"/>
@@ -44,7 +41,7 @@
         <div class="progress-text">
           <span id="porcentajePago">0%</span>
         </div>
-    </div>
+      </div>
 
       <div class="pago-detalle">
         <p>Total: $<span id="total"></span></p>
@@ -52,9 +49,18 @@
         <p>Saldo: $<span id="saldo"></span></p>
         <div id="estadoPago" class="estado-label"></div>
       </div>
+
     </div>
 
   </div>
+
+  <!-- Indicadores -->
+  <div class="carousel-dots">
+    <span></span>
+    <span></span>
+  </div>
+
+</div>
 
   <div class="card">
     <h2>Servicios extras</h2>
