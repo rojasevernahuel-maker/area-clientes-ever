@@ -3,110 +3,165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evento - Ever Fotografías</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=15">
-<title>Panel del Evento</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:#000;
+  color:white;
+}
+
+/* ===== PORTADA ===== */
+
+.portada{
+  position:relative;
+  height:100vh;
+  width:100%;
+  background-image:url("img/maria-2026.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0.75)
+  );
+}
+
+.contenido-portada{
+  position:relative;
+  z-index:2;
+  padding:20px;
+}
+
+/* ===== TITULO ===== */
+
+.titulo-evento{
+  font-size:28px;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.subtitulo{
+  font-size:14px;
+  letter-spacing:2px;
+  margin-bottom:30px;
+  color:#c8a95c;
+}
+
+/* ===== CONTADOR ===== */
+
+.contador{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+
+.bloque{
+  background:rgba(0,0,0,0.6);
+  padding:15px 10px;
+  border-radius:12px;
+  min-width:65px;
+}
+
+.numero{
+  font-size:22px;
+  font-weight:600;
+}
+
+.label{
+  font-size:11px;
+  opacity:0.7;
+}
+
+/* ===== MENSAJE FINAL ===== */
+
+.mensaje-final{
+  margin-top:25px;
+  font-size:20px;
+  font-weight:600;
+  display:none;
+  color:#c8a95c;
+}
+
+/* ===== MOBILE EXTRA ===== */
+
+@media (max-width:480px){
+  .titulo-evento{
+    font-size:24px;
+  }
+
+  .numero{
+    font-size:20px;
+  }
+
+  .bloque{
+    min-width:60px;
+    padding:12px 8px;
+  }
+}
+
+</style>
 </head>
 <body>
 
-<div class="evento-container">
+<section class="portada">
 
-  <!-- PORTADA CON COUNTDOWN -->
-  <div class="portada" id="portadaEvento">
-    <div class="portada-overlay">
-      <h1 id="nombreEvento"></h1>
+  <div class="overlay"></div>
 
-      <div class="countdown" id="countdown">
-        <div class="time-box">
-          <span id="dias">0</span>
-          <small>Días</small>
-        </div>
-        <div class="time-box">
-          <span id="horas">0</span>
-          <small>Horas</small>
-        </div>
-        <div class="time-box">
-          <span id="minutos">0</span>
-          <small>Min</small>
-        </div>
-        <div class="time-box">
-          <span id="segundos">0</span>
-          <small>Seg</small>
-        </div>
+  <div class="contenido-portada">
+
+    <div class="titulo-evento">María 2026</div>
+    <div class="subtitulo">28 · FEBRERO · 2026</div>
+
+    <div class="contador" id="contador">
+      <div class="bloque">
+        <div class="numero" id="dias">00</div>
+        <div class="label">DÍAS</div>
       </div>
 
-      <div class="evento-iniciado" id="eventoIniciado">
-        Hoy es el gran dia
+      <div class="bloque">
+        <div class="numero" id="horas">00</div>
+        <div class="label">HORAS</div>
       </div>
 
-    </div>
-  </div>
-
-  <!-- ================= CAROUSEL SERVICIO ================= -->
-
-  <div class="servicio-carousel">
-
-    <div class="servicio-track">
-
-      <div class="card servicio-slide">
-        <h2>Servicio contratado</h2>
-        <h3 id="comboNombre"></h3>
-        <ul id="listaIncluye"></ul>
+      <div class="bloque">
+        <div class="numero" id="minutos">00</div>
+        <div class="label">MIN</div>
       </div>
 
-      <div class="card servicio-slide pago-slide">
-        <h2>Estado de pago</h2>
-
-        <div class="progress-container">
-          <svg viewBox="0 0 150 150">
-            <circle cx="75" cy="75" r="50" class="bg-circle"/>
-            <circle cx="75" cy="75" r="50" class="progress-circle" id="progressCircle"/>
-          </svg>
-          <div class="progress-text">
-            <span id="porcentajePago">0%</span>
-          </div>
-        </div>
-
-        <div class="pago-detalle">
-          <p>Total servicio: $<span id="total"></span></p>
-          <p>Pagado: $<span id="pagado"></span></p>
-          <p class="saldo-servicio">
-            Saldo servicio: $<span id="saldoServicio"></span>
-          </p>
-          <p class="saldo-viatico">
-            Saldo pendiente: $<span id="saldoViatico"></span>
-            <span class="detalle-extra">(Viáticos y gastos externos)</span>
-          </p>
-          <div id="estadoPago" class="estado-label"></div>
-        </div>
-
+      <div class="bloque">
+        <div class="numero" id="segundos">00</div>
+        <div class="label">SEG</div>
       </div>
-
     </div>
 
-    <div class="carousel-dots">
-      <span></span>
-      <span></span>
+    <div class="mensaje-final" id="mensajeFinal">
+      Hoy es el gran día
     </div>
 
   </div>
 
-  <!-- Servicios extras -->
-  <div class="card">
-    <h2>Servicios extras</h2>
-    <div id="extrasContainer"></div>
-  </div>
+</section>
 
-  <!-- Ubicación -->
-  <div class="card">
-    <h2>Ubicación del evento</h2>
-    <p id="ubicacion"></p>
-    <a id="mapaBtn" class="map-btn" target="_blank">Ver en Google Maps</a>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
 <script src="evento-logic.js"></script>
 
 </body>
