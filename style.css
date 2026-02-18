@@ -356,3 +356,27 @@ body{
 .pago-slide .pago-detalle{
   margin-top:18px;
 }
+
+/* ============================= */
+/* Mejorar efecto visual de cards */
+/* ============================= */
+
+.servicio-track{
+  padding-left:6px;
+}
+
+.servicio-slide{
+  flex:0 0 88%; /* antes 100% */
+  margin-right:16px;
+  scroll-snap-align:start;
+  transition:transform 0.3s ease;
+}
+
+/* Fondo un poco más claro que el body */
+.servicio-slide.card{
+  background:linear-gradient(145deg,#1f1f2a,#15151f);
+  border:1px solid #2d2d38;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.03);
+}
