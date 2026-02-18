@@ -7,18 +7,16 @@ if (!clientes || !clientes[codigo]) {
 
   const cliente = clientes[codigo];
 
-  /* ================= PORTADA DINÁMICA ================= */
+  /* ================= PORTADA ================= */
 
   const portada = document.getElementById("portadaEvento");
-  if (portada) {
-    portada.style.backgroundImage = "url('img/maria-2026.jpg')";
-  }
+  portada.style.backgroundImage = "url('img/maria-2026.jpg')";
 
   document.getElementById("nombreEvento").textContent = cliente.nombre;
 
-  /* ================= COUNTDOWN ================= */
+  /* ================= FECHA CORRECTA ================= */
 
-  const fechaEvento = new Date(cliente.fecha).getTime();
+  const fechaEvento = new Date("2026-02-28T22:00:00-03:00").getTime();
 
   const diasEl = document.getElementById("dias");
   const horasEl = document.getElementById("horas");
@@ -29,7 +27,6 @@ if (!clientes || !clientes[codigo]) {
   const mensajeFinal = document.getElementById("mensajeFinal");
 
   function actualizarContador() {
-
     const ahora = new Date().getTime();
     const diferencia = fechaEvento - ahora;
 
@@ -53,13 +50,11 @@ if (!clientes || !clientes[codigo]) {
   actualizarContador();
   setInterval(actualizarContador, 1000);
 
-  /* ================= DATOS GENERALES ================= */
+  /* ================= DATOS ================= */
 
   document.getElementById("comboNombre").textContent = cliente.combo;
   document.getElementById("ubicacion").textContent = cliente.ubicacion;
   document.getElementById("mapaBtn").href = cliente.mapa;
-
-  /* ================= LISTA SERVICIO ================= */
 
   const lista = document.getElementById("listaIncluye");
   lista.innerHTML = "";
@@ -117,24 +112,26 @@ if (!clientes || !clientes[codigo]) {
     const div = document.createElement("div");
     div.classList.add("extra-item");
 
-    const mensaje = encodeURIComponent(
-      `Hola Ever! Quiero agregar el servicio extra: ${extra.nombre} para el evento ${cliente.nombre}`
-    );
-
     div.innerHTML = `
       <div class="extra-info">
         <h3>${extra.nombre}</h3>
         <p>${extra.descripcion}</p>
       </div>
       <div class="extra-precio">$${extra.precio.toLocaleString()}</div>
-      <a class="whatsapp-btn"
-         href="https://wa.me/5493813920039?text=${mensaje}"
-         target="_blank">
-         Solicitar
-      </a>
     `;
 
     extrasContainer.appendChild(div);
+  });
+
+  /* ================= DOTS DINÁMICOS ================= */
+
+  const slider = document.getElementById("sliderTrack");
+  const dots = document.querySelectorAll(".dot");
+
+  slider.addEventListener("scroll", () => {
+    const index = Math.round(slider.scrollLeft / slider.clientWidth);
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[index].classList.add("active");
   });
 
 }
