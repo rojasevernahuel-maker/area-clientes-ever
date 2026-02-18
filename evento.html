@@ -43,16 +43,21 @@
         </div>
       </div>
 
-      <div class="pago-detalle">
-        <p>Total: $<span id="total"></span></p>
-        <p>Pagado: $<span id="pagado"></span></p>
-        <p>Saldo: $<span id="saldo"></span></p>
-        <div id="estadoPago" class="estado-label"></div>
-      </div>
+<div class="pago-detalle">
+  <p>Total servicio: $<span id="total"></span></p>
+  <p>Pagado: $<span id="pagado"></span></p>
 
-    </div>
+  <p class="saldo-servicio">
+    Saldo servicio: $<span id="saldoServicio"></span>
+  </p>
 
-  </div>
+  <p class="saldo-viatico">
+    Saldo pendiente: $<span id="saldoViatico"></span>
+    <span class="detalle-extra">(Viáticos y gastos externos)</span>
+  </p>
+
+  <div id="estadoPago" class="estado-label"></div>
+</div>
 
   <!-- Indicadores -->
   <div class="carousel-dots">
