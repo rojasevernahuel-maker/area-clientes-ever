@@ -47,55 +47,56 @@
 
   <!-- ================= SLIDER ================= -->
 
-  <div class="servicio-carousel">
+<div class="servicio-carousel">
 
-    <div class="servicio-track" id="sliderTrack">
+  <div class="servicio-track" id="sliderTrack">
 
-      <!-- SLIDE 1 - SERVICIO -->
-      <div class="servicio-slide card">
-        <div class="servicio-card">
+    <!-- SLIDE 1 -->
+    <div class="servicio-slide card">
+      <h2>Servicio contratado</h2>
 
-          <div class="servicio-left">
-            <h3 id="comboNombre"></h3>
-            <ul id="listaIncluye"></ul>
-          </div>
-
+      <div class="servicio-card">
+        <div class="servicio-left">
+          <h3 id="comboNombre"></h3>
+          <ul id="listaIncluye"></ul>
         </div>
       </div>
-
-      <!-- SLIDE 2 - ESTADO DE PAGO -->
-      <div class="servicio-slide card pago-slide">
-
-        <div class="progress-container">
-          <svg>
-            <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
-            <circle class="progress-circle" id="progressCircle" cx="60" cy="60" r="50"></circle>
-          </svg>
-          <div class="progress-text" id="porcentajePago">0%</div>
-        </div>
-
-        <div class="pago-detalle">
-          Total: $<span id="total"></span><br>
-          Pagado: $<span id="pagado"></span><br>
-          <span class="saldo-servicio">
-            Saldo servicio: $<span id="saldoServicio"></span>
-          </span><br>
-          <span class="saldo-viatico">
-            Viáticos: $<span id="saldoViatico"></span>
-          </span>
-          <div class="estado-label" id="estadoPago"></div>
-        </div>
-
-      </div>
-
     </div>
 
-    <div class="carousel-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
+    <!-- SLIDE 2 -->
+    <div class="servicio-slide card pago-slide">
+      <h2>Estado del pago</h2>
+
+      <div class="progress-container">
+        <svg>
+          <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+          <circle class="progress-circle" id="progressCircle" cx="60" cy="60" r="50"></circle>
+        </svg>
+        <div class="progress-text" id="porcentajePago">0%</div>
+      </div>
+
+      <div class="pago-detalle">
+        Total: $<span id="total"></span><br>
+        Pagado: $<span id="pagado"></span><br>
+        <span class="saldo-servicio">
+          Saldo servicio: $<span id="saldoServicio"></span>
+        </span><br>
+        <span class="saldo-viatico">
+          Viáticos: $<span id="saldoViatico"></span>
+        </span>
+        <div class="estado-label" id="estadoPago"></div>
+      </div>
+
     </div>
 
   </div>
+
+  <div class="carousel-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+  </div>
+
+</div>
 
   <!-- ================= EXTRAS (ABAJO) ================= -->
 
