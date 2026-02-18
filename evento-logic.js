@@ -18,37 +18,38 @@ if (!clientes[codigo]) {
 
   const fechaEvento = new Date("2026-02-28T22:00:00").getTime();
 
-  const diasEl = document.getElementById("dias");
-  const horasEl = document.getElementById("horas");
-  const minutosEl = document.getElementById("minutos");
-  const segundosEl = document.getElementById("segundos");
+const diasEl = document.getElementById("dias");
+const horasEl = document.getElementById("horas");
+const minutosEl = document.getElementById("minutos");
+const segundosEl = document.getElementById("segundos");
 
-  const countdown = document.getElementById("contador");
-  const eventoIniciado = document.getElementById("mensajeFinal");
+const contador = document.getElementById("contador");
+const mensajeFinal = document.getElementById("mensajeFinal");
 
-  const intervalo = setInterval(() => {
+function actualizarContador() {
 
-    const ahora = new Date().getTime();
-    const diferencia = fechaEvento - ahora;
+  const ahora = new Date().getTime();
+  const diferencia = fechaEvento - ahora;
 
-    if (diferencia <= 0) {
-      clearInterval(intervalo);
-      if (countdown) countdown.style.display = "none";
-      if (eventoIniciado) eventoIniciado.style.display = "block";
-      return;
-    }
+  if (diferencia <= 0) {
+    contador.style.display = "none";
+    mensajeFinal.style.display = "block";
+    return;
+  }
 
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    if (diasEl) diasEl.textContent = dias;
-    if (horasEl) horasEl.textContent = horas;
-    if (minutosEl) minutosEl.textContent = minutos;
-    if (segundosEl) segundosEl.textContent = segundos;
+  diasEl.textContent = dias;
+  horasEl.textContent = horas;
+  minutosEl.textContent = minutos;
+  segundosEl.textContent = segundos;
+}
 
-  }, 1000);
+actualizarContador();
+setInterval(actualizarContador, 1000);
 
   /* ================= DATOS GENERALES ================= */
 
