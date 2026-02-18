@@ -210,11 +210,29 @@ body{
 /* EXTRAS */
 
 .extra-item{
-  background:#15151c;
-  border-radius:18px;
-  padding:16px;
-  margin-bottom:14px;
-  border:1px solid #2a2a32;
+  background:linear-gradient(145deg,#1f1f2a,#15151f);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:18px;
+  border:1px solid #2d2d38;
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+.whatsapp-btn{
+  display:block;
+  text-align:center;
+  background:linear-gradient(135deg,#c8a95c,#b38b3c);
+  padding:12px;
+  border-radius:14px;
+  text-decoration:none;
+  color:black;
+  font-weight:600;
+  margin-top:12px;
+  transition:0.3s;
+}
+
+.whatsapp-btn:active{
+  transform:scale(0.97);
 }
 
 .extra-info h3{
