@@ -342,3 +342,17 @@ body{
 
 }
 
+/* Centrar contenido en card de pago */
+
+.pago-slide{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  min-height:320px;
+}
+
+.pago-slide .pago-detalle{
+  margin-top:18px;
+}
