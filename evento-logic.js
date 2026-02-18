@@ -25,16 +25,27 @@ if (!clientes[codigo]) {
     lista.appendChild(li);
   });
 
-  // PAGOS
-  const total = cliente.total;
-  const pagado = cliente.pagado;
-  const saldo = total - pagado;
-  const porcentaje = Math.round((pagado / total) * 100);
+// ======================
+// PAGOS CON VIÁTICOS
+// ======================
 
-  document.getElementById("total").textContent = total.toLocaleString();
-  document.getElementById("pagado").textContent = pagado.toLocaleString();
-  document.getElementById("saldo").textContent = saldo.toLocaleString();
-  document.getElementById("porcentajePago").textContent = porcentaje + "%";
+const totalServicio = cliente.total;
+const pagado = cliente.pagado;
+
+// 🔥 VIÁTICOS FIJOS (después lo hacemos por cliente si querés)
+const viaticos = 50000;
+
+const totalReal = totalServicio + viaticos;
+const saldoServicio = totalServicio - pagado;
+const saldoViatico = viaticos;
+
+const porcentaje = Math.round((pagado / totalReal) * 100);
+
+document.getElementById("total").textContent = totalServicio.toLocaleString();
+document.getElementById("pagado").textContent = pagado.toLocaleString();
+document.getElementById("saldoServicio").textContent = saldoServicio.toLocaleString();
+document.getElementById("saldoViatico").textContent = saldoViatico.toLocaleString();
+document.getElementById("porcentajePago").textContent = porcentaje + "%";
 
   const circle = document.getElementById("progressCircle");
   const radius = 50;
