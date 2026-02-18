@@ -104,24 +104,32 @@ if (!clientes || !clientes[codigo]) {
 
   /* ================= EXTRAS ================= */
 
-  const extrasContainer = document.getElementById("extrasContainer");
-  extrasContainer.innerHTML = "";
+cliente.extras.forEach(extra => {
 
-  cliente.extras.forEach(extra => {
+  const div = document.createElement("div");
+  div.classList.add("extra-item");
 
-    const div = document.createElement("div");
-    div.classList.add("extra-item");
+  const mensaje = encodeURIComponent(
+    `Hola Ever! Quiero agregar el servicio extra: ${extra.nombre} para el evento ${cliente.nombre}`
+  );
 
-    div.innerHTML = `
-      <div class="extra-info">
-        <h3>${extra.nombre}</h3>
-        <p>${extra.descripcion}</p>
-      </div>
-      <div class="extra-precio">$${extra.precio.toLocaleString()}</div>
-    `;
+  div.innerHTML = `
+    <div class="extra-info">
+      <h3>${extra.nombre}</h3>
+      <p>${extra.descripcion}</p>
+    </div>
 
-    extrasContainer.appendChild(div);
-  });
+    <div class="extra-precio">$${extra.precio.toLocaleString()}</div>
+
+    <a class="whatsapp-btn"
+       href="https://wa.me/5493813920039?text=${mensaje}"
+       target="_blank">
+       Solicitar por WhatsApp
+    </a>
+  `;
+
+  extrasContainer.appendChild(div);
+});
 
 /* ================= DOTS CORRECTOS ================= */
 
