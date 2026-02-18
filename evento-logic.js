@@ -3,7 +3,41 @@ const codigo = params.get("codigo");
 
 if (!clientes[codigo]) {
   document.body.innerHTML = "<h2 style='padding:20px'>Código inválido</h2>";
-} else {
+}   // ================= COUNTDOWN =================
+
+  const fechaEvento = new Date("2026-02-28T22:00:00").getTime();
+
+  const diasEl = document.getElementById("dias");
+  const horasEl = document.getElementById("horas");
+  const minutosEl = document.getElementById("minutos");
+  const segundosEl = document.getElementById("segundos");
+  const countdown = document.getElementById("countdown");
+  const eventoIniciado = document.getElementById("eventoIniciado");
+
+  const intervalo = setInterval(() => {
+
+    const ahora = new Date().getTime();
+    const diferencia = fechaEvento - ahora;
+
+    if (diferencia <= 0) {
+      clearInterval(intervalo);
+      countdown.style.display = "none";
+      eventoIniciado.style.display = "block";
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    diasEl.textContent = dias;
+    horasEl.textContent = horas;
+    minutosEl.textContent = minutos;
+    segundosEl.textContent = segundos;
+
+  }, 1000);
+ {
 
   const cliente = clientes[codigo];
 
