@@ -7,45 +7,44 @@ if (!clientes[codigo]) {
 
   const cliente = clientes[codigo];
 
-  // DATOS GENERALES
+  // ================= DATOS GENERALES =================
+
   document.getElementById("nombreEvento").textContent = cliente.nombre;
   document.getElementById("comboNombre").textContent = cliente.combo;
   document.getElementById("ubicacion").textContent = cliente.ubicacion;
   document.getElementById("mapaBtn").href = cliente.mapa;
 
-  // PORTADA (luego podés cambiar esta imagen)
   document.getElementById("portadaEvento").style.backgroundImage =
     "url('https://images.unsplash.com/photo-1529634898651-9f31a9b5b0c5')";
 
-  // LISTA INCLUYE
+  // ================= LISTA SERVICIO =================
+
   const lista = document.getElementById("listaIncluye");
+  lista.innerHTML = "";
+
   cliente.incluye.forEach(item => {
     const li = document.createElement("li");
     li.textContent = item;
     lista.appendChild(li);
   });
 
-// ======================
-// PAGOS CON VIÁTICOS
-// ======================
+  // ================= PAGOS CON VIÁTICOS =================
 
-const totalServicio = cliente.total;
-const pagado = cliente.pagado;
+  const totalServicio = cliente.total;
+  const pagado = cliente.pagado;
+  const viaticos = 50000;
 
-// 🔥 VIÁTICOS FIJOS (después lo hacemos por cliente si querés)
-const viaticos = 50000;
+  const totalReal = totalServicio + viaticos;
+  const saldoServicio = totalServicio - pagado;
+  const saldoViatico = viaticos;
 
-const totalReal = totalServicio + viaticos;
-const saldoServicio = totalServicio - pagado;
-const saldoViatico = viaticos;
+  const porcentaje = Math.round((pagado / totalReal) * 100);
 
-const porcentaje = Math.round((pagado / totalReal) * 100);
-
-document.getElementById("total").textContent = totalServicio.toLocaleString();
-document.getElementById("pagado").textContent = pagado.toLocaleString();
-document.getElementById("saldoServicio").textContent = saldoServicio.toLocaleString();
-document.getElementById("saldoViatico").textContent = saldoViatico.toLocaleString();
-document.getElementById("porcentajePago").textContent = porcentaje + "%";
+  document.getElementById("total").textContent = totalServicio.toLocaleString();
+  document.getElementById("pagado").textContent = pagado.toLocaleString();
+  document.getElementById("saldoServicio").textContent = saldoServicio.toLocaleString();
+  document.getElementById("saldoViatico").textContent = saldoViatico.toLocaleString();
+  document.getElementById("porcentajePago").textContent = porcentaje + "%";
 
   const circle = document.getElementById("progressCircle");
   const radius = 50;
@@ -55,20 +54,25 @@ document.getElementById("porcentajePago").textContent = porcentaje + "%";
   circle.style.strokeDashoffset =
     circumference - (porcentaje / 100) * circumference;
 
-
   const estado = document.getElementById("estadoPago");
+
   if (porcentaje === 100) {
     estado.textContent = "Pago completo";
     estado.classList.add("estado-ok");
+    circle.classList.remove("pendiente");
   } else {
     estado.textContent = "Pago pendiente";
     estado.classList.add("estado-pendiente");
+    circle.classList.add("pendiente");
   }
 
-  // EXTRAS
+  // ================= EXTRAS =================
+
   const extrasContainer = document.getElementById("extrasContainer");
+  extrasContainer.innerHTML = "";
 
   cliente.extras.forEach(extra => {
+
     const div = document.createElement("div");
     div.classList.add("extra-item");
 
@@ -92,29 +96,9 @@ document.getElementById("porcentajePago").textContent = porcentaje + "%";
     extrasContainer.appendChild(div);
   });
 
-  // CONTADOR
-  const fechaEvento = new Date(cliente.fecha).getTime();
-
-  setInterval(() => {
-    const ahora = new Date().getTime();
-    const diferencia = fechaEvento - ahora;
-
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
-    const segundos = Math.floor((diferencia / 1000) % 60);
-
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent = horas;
-    document.getElementById("minutos").textContent = minutos;
-    document.getElementById("segundos").textContent = segundos;
-  }, 1000);
-
 }
 
-/* ========================= */
-/* Carousel dots dinámicos */
-/* ========================= */
+/* ================= CAROUSEL DOTS ================= */
 
 const track = document.querySelector(".servicio-track");
 const dots = document.querySelectorAll(".carousel-dots span");
@@ -125,7 +109,6 @@ if(track){
 
     const scrollPosition = track.scrollLeft;
     const cardWidth = track.offsetWidth;
-
     const index = Math.round(scrollPosition / cardWidth);
 
     dots.forEach(dot => {
