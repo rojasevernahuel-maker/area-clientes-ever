@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const codigo = params.get("codigo");
 
-if (!clientes[codigo]) {
+if (!clientes || !clientes[codigo]) {
   document.body.innerHTML = "<h2 style='padding:20px'>Código inválido</h2>";
 } else {
 
@@ -14,46 +14,47 @@ if (!clientes[codigo]) {
     portada.style.backgroundImage = "url('img/maria-2026.jpg')";
   }
 
+  document.getElementById("nombreEvento").textContent = cliente.nombre;
+
   /* ================= COUNTDOWN ================= */
 
-  const fechaEvento = new Date("2026-02-28T22:00:00").getTime();
+  const fechaEvento = new Date(cliente.fecha).getTime();
 
-const diasEl = document.getElementById("dias");
-const horasEl = document.getElementById("horas");
-const minutosEl = document.getElementById("minutos");
-const segundosEl = document.getElementById("segundos");
+  const diasEl = document.getElementById("dias");
+  const horasEl = document.getElementById("horas");
+  const minutosEl = document.getElementById("minutos");
+  const segundosEl = document.getElementById("segundos");
 
-const contador = document.getElementById("contador");
-const mensajeFinal = document.getElementById("mensajeFinal");
+  const contador = document.getElementById("contador");
+  const mensajeFinal = document.getElementById("mensajeFinal");
 
-function actualizarContador() {
+  function actualizarContador() {
 
-  const ahora = new Date().getTime();
-  const diferencia = fechaEvento - ahora;
+    const ahora = new Date().getTime();
+    const diferencia = fechaEvento - ahora;
 
-  if (diferencia <= 0) {
-    contador.style.display = "none";
-    mensajeFinal.style.display = "block";
-    return;
+    if (diferencia <= 0) {
+      contador.style.display = "none";
+      mensajeFinal.style.display = "block";
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    diasEl.textContent = dias;
+    horasEl.textContent = horas;
+    minutosEl.textContent = minutos;
+    segundosEl.textContent = segundos;
   }
 
-  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-  diasEl.textContent = dias;
-  horasEl.textContent = horas;
-  minutosEl.textContent = minutos;
-  segundosEl.textContent = segundos;
-}
-
-actualizarContador();
-setInterval(actualizarContador, 1000);
+  actualizarContador();
+  setInterval(actualizarContador, 1000);
 
   /* ================= DATOS GENERALES ================= */
 
-  document.getElementById("nombreEvento").textContent = cliente.nombre;
   document.getElementById("comboNombre").textContent = cliente.combo;
   document.getElementById("ubicacion").textContent = cliente.ubicacion;
   document.getElementById("mapaBtn").href = cliente.mapa;
@@ -69,7 +70,7 @@ setInterval(actualizarContador, 1000);
     lista.appendChild(li);
   });
 
-  /* ================= PAGOS CON VIÁTICOS ================= */
+  /* ================= PAGOS ================= */
 
   const totalServicio = cliente.total;
   const pagado = cliente.pagado;
@@ -100,7 +101,6 @@ setInterval(actualizarContador, 1000);
   if (porcentaje === 100) {
     estado.textContent = "Pago completo";
     estado.classList.add("estado-ok");
-    circle.classList.remove("pendiente");
   } else {
     estado.textContent = "Pago pendiente";
     estado.classList.add("estado-pendiente");
@@ -135,33 +135,6 @@ setInterval(actualizarContador, 1000);
     `;
 
     extrasContainer.appendChild(div);
-  });
-
-}
-
-/* ================= CAROUSEL DOTS ================= */
-
-const track = document.querySelector(".servicio-track");
-const dots = document.querySelectorAll(".carousel-dots span");
-
-if (track) {
-
-  track.addEventListener("scroll", () => {
-
-    const scrollPosition = track.scrollLeft;
-    const cardWidth = track.offsetWidth;
-    const index = Math.round(scrollPosition / cardWidth);
-
-    dots.forEach(dot => {
-      dot.style.background = "#444";
-      dot.style.opacity = "0.5";
-    });
-
-    if (dots[index]) {
-      dots[index].style.background = "#c8a95c";
-      dots[index].style.opacity = "1";
-    }
-
   });
 
 }
