@@ -276,3 +276,69 @@ body{
   }
 
 }
+
+/* ============================= */
+/* CAROUSEL SERVICIO - SOLO MÓVIL */
+/* ============================= */
+
+.servicio-carousel{
+  margin-bottom:26px;
+}
+
+.servicio-track{
+  display:flex;
+  gap:16px;
+}
+
+/* Slides */
+.servicio-slide{
+  flex:0 0 100%;
+}
+
+/* Dots */
+.carousel-dots{
+  display:none;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+}
+
+.carousel-dots span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#444;
+  opacity:0.5;
+}
+
+.carousel-dots span:first-child{
+  background:#c8a95c;
+  opacity:1;
+}
+
+/* ============================= */
+/* ACTIVAR MODO DESLIZABLE EN MÓVIL */
+/* ============================= */
+
+@media(max-width:768px){
+
+  .servicio-track{
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .servicio-slide{
+    scroll-snap-align:start;
+  }
+
+  .servicio-track::-webkit-scrollbar{
+    display:none;
+  }
+
+  .carousel-dots{
+    display:flex;
+  }
+
+}
+
