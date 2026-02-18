@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evento - Ever Fotografías</title>
 
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=10">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
@@ -39,19 +39,19 @@
       </div>
 
       <div class="evento-iniciado" id="mensajeFinal">
-        Hoy es el gran día
+        🎉 Hoy es el gran día
       </div>
 
     </div>
   </div>
 
-  <!-- ================= SERVICIO ================= -->
+  <!-- ================= SLIDER ================= -->
 
   <div class="servicio-carousel">
 
-    <div class="servicio-track">
+    <div class="servicio-track" id="sliderTrack">
 
-      <!-- SLIDE SERVICIO -->
+      <!-- SLIDE 1 - SERVICIO -->
       <div class="servicio-slide card">
         <div class="servicio-card">
 
@@ -60,46 +60,48 @@
             <ul id="listaIncluye"></ul>
           </div>
 
-          <div class="servicio-right">
-            <div class="progress-container">
-              <svg>
-                <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
-                <circle class="progress-circle" id="progressCircle" cx="60" cy="60" r="50"></circle>
-              </svg>
-              <div class="progress-text" id="porcentajePago">0%</div>
-            </div>
-
-            <div class="pago-detalle">
-              Total: $<span id="total"></span><br>
-              Pagado: $<span id="pagado"></span><br>
-              <span class="saldo-servicio">
-                Saldo servicio: $<span id="saldoServicio"></span>
-              </span><br>
-              <span class="saldo-viatico">
-                Viáticos: $<span id="saldoViatico"></span>
-              </span>
-
-              <div class="estado-label" id="estadoPago"></div>
-            </div>
-
-          </div>
-
         </div>
       </div>
 
-      <!-- SLIDE EXTRAS -->
-      <div class="servicio-slide card">
-        <h2>Servicios Extras</h2>
-        <div id="extrasContainer"></div>
+      <!-- SLIDE 2 - ESTADO DE PAGO -->
+      <div class="servicio-slide card pago-slide">
+
+        <div class="progress-container">
+          <svg>
+            <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+            <circle class="progress-circle" id="progressCircle" cx="60" cy="60" r="50"></circle>
+          </svg>
+          <div class="progress-text" id="porcentajePago">0%</div>
+        </div>
+
+        <div class="pago-detalle">
+          Total: $<span id="total"></span><br>
+          Pagado: $<span id="pagado"></span><br>
+          <span class="saldo-servicio">
+            Saldo servicio: $<span id="saldoServicio"></span>
+          </span><br>
+          <span class="saldo-viatico">
+            Viáticos: $<span id="saldoViatico"></span>
+          </span>
+          <div class="estado-label" id="estadoPago"></div>
+        </div>
+
       </div>
 
     </div>
 
     <div class="carousel-dots">
-      <span></span>
-      <span></span>
+      <span class="dot active"></span>
+      <span class="dot"></span>
     </div>
 
+  </div>
+
+  <!-- ================= EXTRAS (ABAJO) ================= -->
+
+  <div class="card">
+    <h2>Servicios Extras</h2>
+    <div id="extrasContainer"></div>
   </div>
 
   <!-- ================= UBICACIÓN ================= -->
