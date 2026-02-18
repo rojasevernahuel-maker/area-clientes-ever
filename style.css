@@ -380,3 +380,30 @@ body{
     0 20px 50px rgba(0,0,0,0.6),
     0 0 0 1px rgba(255,255,255,0.03);
 }
+
+/* ============================= */
+/* SALDOS MEJORADOS */
+/* ============================= */
+
+.saldo-servicio{
+  color:#9ca3af;
+  font-size:13px;
+}
+
+.saldo-viatico{
+  margin-top:6px;
+  font-weight:600;
+  color:#fb923c; /* naranja elegante */
+}
+
+.detalle-extra{
+  display:block;
+  font-size:12px;
+  opacity:0.7;
+  margin-top:2px;
+}
+
+/* círculo cuando hay pendiente */
+.progress-circle.pendiente{
+  stroke:#fb923c;
+}
