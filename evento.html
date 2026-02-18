@@ -4,16 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=9">
+<link rel="stylesheet" href="style.css?v=15">
 <title>Panel del Evento</title>
 </head>
 <body>
 
 <div class="evento-container">
 
+  <!-- PORTADA CON COUNTDOWN -->
   <div class="portada" id="portadaEvento">
     <div class="portada-overlay">
       <h1 id="nombreEvento"></h1>
+
+      <div class="countdown" id="countdown">
+        <div class="time-box">
+          <span id="dias">0</span>
+          <small>Días</small>
+        </div>
+        <div class="time-box">
+          <span id="horas">0</span>
+          <small>Horas</small>
+        </div>
+        <div class="time-box">
+          <span id="minutos">0</span>
+          <small>Min</small>
+        </div>
+        <div class="time-box">
+          <span id="segundos">0</span>
+          <small>Seg</small>
+        </div>
+      </div>
+
+      <div class="evento-iniciado" id="eventoIniciado">
+        Hoy es el gran dia
+      </div>
+
     </div>
   </div>
 
@@ -23,16 +48,13 @@
 
     <div class="servicio-track">
 
-      <!-- CARD 1 -->
       <div class="card servicio-slide">
         <h2>Servicio contratado</h2>
         <h3 id="comboNombre"></h3>
         <ul id="listaIncluye"></ul>
       </div>
 
-      <!-- CARD 2 -->
       <div class="card servicio-slide pago-slide">
-
         <h2>Estado de pago</h2>
 
         <div class="progress-container">
@@ -48,16 +70,13 @@
         <div class="pago-detalle">
           <p>Total servicio: $<span id="total"></span></p>
           <p>Pagado: $<span id="pagado"></span></p>
-
           <p class="saldo-servicio">
             Saldo servicio: $<span id="saldoServicio"></span>
           </p>
-
           <p class="saldo-viatico">
             Saldo pendiente: $<span id="saldoViatico"></span>
             <span class="detalle-extra">(Viáticos y gastos externos)</span>
           </p>
-
           <div id="estadoPago" class="estado-label"></div>
         </div>
 
@@ -65,16 +84,12 @@
 
     </div>
 
-    <!-- Indicadores -->
     <div class="carousel-dots">
       <span></span>
       <span></span>
     </div>
 
   </div>
-
-  <!-- ================= FIN CAROUSEL ================= -->
-
 
   <!-- Servicios extras -->
   <div class="card">
