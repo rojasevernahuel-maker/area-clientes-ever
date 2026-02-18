@@ -25,13 +25,13 @@ body{
 /* PORTADA */
 
 .portada {
-  height: 240px;
+  height: 260px;
   border-radius: 26px;
   overflow: hidden;
   margin-bottom: 28px;
   position: relative;
   background-size: cover;
-  background-position: center 30%;
+  background-position: center center;
   background-repeat: no-repeat;
   box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
@@ -485,4 +485,11 @@ body{
 .dot.active {
   background:#c8a95c;
   opacity:1;
+}
+
+@media (max-width:768px){
+  .portada{
+    height: 230px;
+    background-position: center 25%;
+  }
 }
