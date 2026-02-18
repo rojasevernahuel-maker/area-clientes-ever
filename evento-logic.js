@@ -3,7 +3,18 @@ const codigo = params.get("codigo");
 
 if (!clientes[codigo]) {
   document.body.innerHTML = "<h2 style='padding:20px'>Código inválido</h2>";
-}   // ================= COUNTDOWN =================
+} else {
+
+  const cliente = clientes[codigo];
+
+  /* ================= PORTADA DINÁMICA ================= */
+
+  const portada = document.getElementById("portadaEvento");
+  if (portada) {
+    portada.style.backgroundImage = "url('img/maria-2026.jpg')";
+  }
+
+  /* ================= COUNTDOWN ================= */
 
   const fechaEvento = new Date("2026-02-28T22:00:00").getTime();
 
@@ -11,8 +22,9 @@ if (!clientes[codigo]) {
   const horasEl = document.getElementById("horas");
   const minutosEl = document.getElementById("minutos");
   const segundosEl = document.getElementById("segundos");
-  const countdown = document.getElementById("countdown");
-  const eventoIniciado = document.getElementById("eventoIniciado");
+
+  const countdown = document.getElementById("contador");
+  const eventoIniciado = document.getElementById("mensajeFinal");
 
   const intervalo = setInterval(() => {
 
@@ -21,8 +33,8 @@ if (!clientes[codigo]) {
 
     if (diferencia <= 0) {
       clearInterval(intervalo);
-      countdown.style.display = "none";
-      eventoIniciado.style.display = "block";
+      if (countdown) countdown.style.display = "none";
+      if (eventoIniciado) eventoIniciado.style.display = "block";
       return;
     }
 
@@ -31,27 +43,21 @@ if (!clientes[codigo]) {
     const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    diasEl.textContent = dias;
-    horasEl.textContent = horas;
-    minutosEl.textContent = minutos;
-    segundosEl.textContent = segundos;
+    if (diasEl) diasEl.textContent = dias;
+    if (horasEl) horasEl.textContent = horas;
+    if (minutosEl) minutosEl.textContent = minutos;
+    if (segundosEl) segundosEl.textContent = segundos;
 
   }, 1000);
- {
 
-  const cliente = clientes[codigo];
-
-  // ================= DATOS GENERALES =================
+  /* ================= DATOS GENERALES ================= */
 
   document.getElementById("nombreEvento").textContent = cliente.nombre;
   document.getElementById("comboNombre").textContent = cliente.combo;
   document.getElementById("ubicacion").textContent = cliente.ubicacion;
   document.getElementById("mapaBtn").href = cliente.mapa;
 
-  document.getElementById("portadaEvento").style.backgroundImage =
-    "url('https://images.unsplash.com/photo-1529634898651-9f31a9b5b0c5')";
-
-  // ================= LISTA SERVICIO =================
+  /* ================= LISTA SERVICIO ================= */
 
   const lista = document.getElementById("listaIncluye");
   lista.innerHTML = "";
@@ -62,7 +68,7 @@ if (!clientes[codigo]) {
     lista.appendChild(li);
   });
 
-  // ================= PAGOS CON VIÁTICOS =================
+  /* ================= PAGOS CON VIÁTICOS ================= */
 
   const totalServicio = cliente.total;
   const pagado = cliente.pagado;
@@ -100,7 +106,7 @@ if (!clientes[codigo]) {
     circle.classList.add("pendiente");
   }
 
-  // ================= EXTRAS =================
+  /* ================= EXTRAS ================= */
 
   const extrasContainer = document.getElementById("extrasContainer");
   extrasContainer.innerHTML = "";
@@ -137,7 +143,7 @@ if (!clientes[codigo]) {
 const track = document.querySelector(".servicio-track");
 const dots = document.querySelectorAll(".carousel-dots span");
 
-if(track){
+if (track) {
 
   track.addEventListener("scroll", () => {
 
@@ -150,7 +156,7 @@ if(track){
       dot.style.opacity = "0.5";
     });
 
-    if(dots[index]){
+    if (dots[index]) {
       dots[index].style.background = "#c8a95c";
       dots[index].style.opacity = "1";
     }
