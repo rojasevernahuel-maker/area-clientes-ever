@@ -24,15 +24,16 @@ body{
 
 /* PORTADA */
 
-.portada{
-  height:140px;
-  border-radius:26px;
-  overflow:hidden;
-  margin-bottom:28px;
-  position:relative;
-  background-size:cover;
-  background-position:center;
-  box-shadow:0 25px 60px rgba(0,0,0,0.6);
+.portada {
+  height: 240px;
+  border-radius: 26px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  position: relative;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
 .portada::after{
@@ -479,4 +480,9 @@ body{
   font-weight: 600;
   margin-top: 20px;
   color: #c8a95c;
+}
+
+.dot.active {
+  background:#c8a95c;
+  opacity:1;
 }
