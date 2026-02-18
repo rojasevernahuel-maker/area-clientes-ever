@@ -3,211 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>15 María - Ever Fotografías</title>
+<title>Evento - Ever Fotografías</title>
 
+<link rel="stylesheet" href="style.css?v=9">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:'Poppins', sans-serif;
-  background:#0f0f12;
-  color:white;
-}
-
-/* ===== PORTADA ===== */
-
-.portada{
-  position:relative;
-  width:100%;
-  height:100vh;
-  background-image:url("img/maria-2026.jpg");
-  background-size:cover;
-  background-position:center center;
-  background-repeat:no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.55),
-    rgba(0,0,0,0.80)
-  );
-}
-
-.contenido-portada{
-  position:relative;
-  z-index:2;
-  padding:20px;
-  width:100%;
-}
-
-/* ===== TITULO ===== */
-
-.titulo-evento{
-  font-size:26px;
-  font-weight:600;
-  margin-bottom:10px;
-}
-
-.subtitulo{
-  font-size:14px;
-  letter-spacing:2px;
-  margin-bottom:25px;
-  color:#c8a95c;
-}
-
-/* ===== CONTADOR ===== */
-
-.contador{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin-top:15px;
-}
-
-.bloque{
-  background:rgba(0,0,0,0.65);
-  padding:14px 8px;
-  border-radius:14px;
-  min-width:60px;
-  backdrop-filter:blur(6px);
-}
-
-.numero{
-  font-size:20px;
-  font-weight:600;
-}
-
-.label{
-  font-size:10px;
-  opacity:0.7;
-}
-
-.mensaje-final{
-  margin-top:25px;
-  font-size:18px;
-  font-weight:600;
-  display:none;
-  color:#c8a95c;
-}
-
-/* ===== CONTENIDO INFERIOR ===== */
-
-.contenido-evento{
-  padding:30px 20px;
-}
-
-.card{
-  background:#17171c;
-  padding:20px;
-  border-radius:18px;
-  border:1px solid #24242b;
-  margin-bottom:20px;
-}
-
-.card h3{
-  font-size:15px;
-  margin-bottom:10px;
-  color:#c8a95c;
-}
-
-.card p{
-  font-size:14px;
-  opacity:0.85;
-}
-
-/* ===== MOBILE ===== */
-
-@media (max-width:480px){
-
-  .titulo-evento{
-    font-size:22px;
-  }
-
-  .numero{
-    font-size:18px;
-  }
-
-  .bloque{
-    min-width:55px;
-    padding:12px 6px;
-  }
-
-}
-
-</style>
 </head>
 <body>
 
-<!-- ===== PORTADA ===== -->
+<div class="evento-container">
 
-<section class="portada">
+  <!-- ================= PORTADA ================= -->
 
-  <div class="overlay"></div>
+  <div class="portada" id="portadaEvento">
+    <div class="portada-overlay">
+      <h1 id="nombreEvento">Evento</h1>
 
-  <div class="contenido-portada">
-
-    <div class="titulo-evento">15 María</div>
-    <div class="subtitulo">28 · FEBRERO · 2026</div>
-
-    <div class="contador" id="contador">
-      <div class="bloque">
-        <div class="numero" id="dias">00</div>
-        <div class="label">DÍAS</div>
+      <div class="countdown" id="contador">
+        <div class="time-box">
+          <span id="dias">00</span>
+          <small>DÍAS</small>
+        </div>
+        <div class="time-box">
+          <span id="horas">00</span>
+          <small>HORAS</small>
+        </div>
+        <div class="time-box">
+          <span id="minutos">00</span>
+          <small>MIN</small>
+        </div>
+        <div class="time-box">
+          <span id="segundos">00</span>
+          <small>SEG</small>
+        </div>
       </div>
 
-      <div class="bloque">
-        <div class="numero" id="horas">00</div>
-        <div class="label">HORAS</div>
+      <div class="evento-iniciado" id="mensajeFinal">
+        Hoy es el gran día
       </div>
 
-      <div class="bloque">
-        <div class="numero" id="minutos">00</div>
-        <div class="label">MIN</div>
+    </div>
+  </div>
+
+  <!-- ================= SERVICIO ================= -->
+
+  <div class="servicio-carousel">
+
+    <div class="servicio-track">
+
+      <!-- SLIDE SERVICIO -->
+      <div class="servicio-slide card">
+        <div class="servicio-card">
+
+          <div class="servicio-left">
+            <h3 id="comboNombre"></h3>
+            <ul id="listaIncluye"></ul>
+          </div>
+
+          <div class="servicio-right">
+            <div class="progress-container">
+              <svg>
+                <circle class="bg-circle" cx="60" cy="60" r="50"></circle>
+                <circle class="progress-circle" id="progressCircle" cx="60" cy="60" r="50"></circle>
+              </svg>
+              <div class="progress-text" id="porcentajePago">0%</div>
+            </div>
+
+            <div class="pago-detalle">
+              Total: $<span id="total"></span><br>
+              Pagado: $<span id="pagado"></span><br>
+              <span class="saldo-servicio">
+                Saldo servicio: $<span id="saldoServicio"></span>
+              </span><br>
+              <span class="saldo-viatico">
+                Viáticos: $<span id="saldoViatico"></span>
+              </span>
+
+              <div class="estado-label" id="estadoPago"></div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
 
-      <div class="bloque">
-        <div class="numero" id="segundos">00</div>
-        <div class="label">SEG</div>
+      <!-- SLIDE EXTRAS -->
+      <div class="servicio-slide card">
+        <h2>Servicios Extras</h2>
+        <div id="extrasContainer"></div>
       </div>
+
     </div>
 
-    <div class="mensaje-final" id="mensajeFinal">
-      Hoy es el gran día
+    <div class="carousel-dots">
+      <span></span>
+      <span></span>
     </div>
 
   </div>
 
-</section>
-
-<!-- ===== CONTENIDO DEL EVENTO (NO SE PIERDE MÁS) ===== -->
-
-<section class="contenido-evento">
+  <!-- ================= UBICACIÓN ================= -->
 
   <div class="card">
-    <h3>Estado del Pago</h3>
-    <p>Información pendiente de cargar.</p>
+    <h2>Ubicación</h2>
+    <p id="ubicacion"></p>
+    <a id="mapaBtn" class="map-btn" target="_blank">Ver en Maps</a>
   </div>
 
-  <div class="card">
-    <h3>Servicio Contratado</h3>
-    <p>Información pendiente de cargar.</p>
-  </div>
+</div>
 
-</section>
-
+<script src="script.js"></script>
 <script src="evento-logic.js"></script>
 
 </body>
