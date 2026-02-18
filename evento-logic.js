@@ -123,15 +123,21 @@ if (!clientes || !clientes[codigo]) {
     extrasContainer.appendChild(div);
   });
 
-  /* ================= DOTS DINÁMICOS ================= */
+/* ================= DOTS CORRECTOS ================= */
 
-  const slider = document.getElementById("sliderTrack");
-  const dots = document.querySelectorAll(".dot");
+const slider = document.getElementById("sliderTrack");
+const dots = document.querySelectorAll(".dot");
 
-  slider.addEventListener("scroll", () => {
-    const index = Math.round(slider.scrollLeft / slider.clientWidth);
-    dots.forEach(dot => dot.classList.remove("active"));
-    dots[index].classList.add("active");
+function updateDots() {
+  const slideWidth = slider.querySelector(".servicio-slide").offsetWidth;
+  const index = Math.round(slider.scrollLeft / slideWidth);
+
+  dots.forEach((dot, i) => {
+    dot.classList.remove("active");
+    if (i === index) {
+      dot.classList.add("active");
+    }
   });
-
 }
+
+slider.addEventListener("scroll", updateDots);
