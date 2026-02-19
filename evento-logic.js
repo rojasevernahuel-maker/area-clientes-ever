@@ -12,9 +12,9 @@ if (!clientes || !clientes[codigo]) {
   const portada = document.getElementById("portadaEvento");
   portada.style.backgroundImage = "url('img/maria-2026.jpg')";
 
-  document.getElementById("nombreEvento").textContent = cliente.nombre;
+  document.getElementById("nombreEvento").textContent = "Mis 15 años - María";
 
-  /* ================= FECHA CORRECTA ================= */
+  /* ================= CONTADOR ================= */
 
   const fechaEvento = new Date("2026-02-28T22:00:00-03:00").getTime();
 
@@ -50,11 +50,9 @@ if (!clientes || !clientes[codigo]) {
   actualizarContador();
   setInterval(actualizarContador, 1000);
 
-  /* ================= DATOS ================= */
+  /* ================= SERVICIO ================= */
 
   document.getElementById("comboNombre").textContent = cliente.combo;
-  document.getElementById("ubicacion").textContent = cliente.ubicacion;
-  document.getElementById("mapaBtn").href = cliente.mapa;
 
   const lista = document.getElementById("listaIncluye");
   lista.innerHTML = "";
@@ -64,6 +62,11 @@ if (!clientes || !clientes[codigo]) {
     li.textContent = item;
     lista.appendChild(li);
   });
+
+  /* ================= UBICACIÓN ================= */
+
+  document.getElementById("ubicacion").textContent = cliente.ubicacion;
+  document.getElementById("mapaBtn").href = cliente.mapa;
 
   /* ================= PAGOS ================= */
 
@@ -104,48 +107,52 @@ if (!clientes || !clientes[codigo]) {
 
   /* ================= EXTRAS ================= */
 
-cliente.extras.forEach(extra => {
+  const extrasContainer = document.getElementById("extrasContainer");
+  extrasContainer.innerHTML = "";
 
-  const div = document.createElement("div");
-  div.classList.add("extra-item");
+  cliente.extras.forEach(extra => {
 
-  const mensaje = encodeURIComponent(
-    `Hola Ever! Quiero agregar el servicio extra: ${extra.nombre} para el evento ${cliente.nombre}`
-  );
+    const div = document.createElement("div");
+    div.classList.add("extra-item");
 
-  div.innerHTML = `
-    <div class="extra-info">
-      <h3>${extra.nombre}</h3>
-      <p>${extra.descripcion}</p>
-    </div>
+    const mensaje = encodeURIComponent(
+      `Hola Ever! Quiero agregar el servicio extra: ${extra.nombre} para el evento ${cliente.nombre}`
+    );
 
-    <div class="extra-precio">$${extra.precio.toLocaleString()}</div>
+    div.innerHTML = `
+      <div class="extra-info">
+        <h3>${extra.nombre}</h3>
+        <p>${extra.descripcion}</p>
+      </div>
 
-    <a class="whatsapp-btn"
-       href="https://wa.me/5493813920039?text=${mensaje}"
-       target="_blank">
-       Solicitar por WhatsApp
-    </a>
-  `;
+      <div class="extra-precio">$${extra.precio.toLocaleString()}</div>
 
-  extrasContainer.appendChild(div);
-});
+      <a class="whatsapp-btn"
+         href="https://wa.me/5493813920039?text=${mensaje}"
+         target="_blank">
+         Solicitar por WhatsApp
+      </a>
+    `;
 
-/* ================= DOTS CORRECTOS ================= */
-
-const slider = document.getElementById("sliderTrack");
-const dots = document.querySelectorAll(".dot");
-
-function updateDots() {
-  const slideWidth = slider.querySelector(".servicio-slide").offsetWidth;
-  const index = Math.round(slider.scrollLeft / slideWidth);
-
-  dots.forEach((dot, i) => {
-    dot.classList.remove("active");
-    if (i === index) {
-      dot.classList.add("active");
-    }
+    extrasContainer.appendChild(div);
   });
-}
 
-slider.addEventListener("scroll", updateDots);
+  /* ================= DOTS ================= */
+
+  const slider = document.getElementById("sliderTrack");
+  const dots = document.querySelectorAll(".dot");
+
+  function updateDots() {
+    const slideWidth = slider.querySelector(".servicio-slide").offsetWidth;
+    const index = Math.round(slider.scrollLeft / slideWidth);
+
+    dots.forEach((dot, i) => {
+      dot.classList.remove("active");
+      if (i === index) {
+        dot.classList.add("active");
+      }
+    });
+  }
+
+  slider.addEventListener("scroll", updateDots);
+}
