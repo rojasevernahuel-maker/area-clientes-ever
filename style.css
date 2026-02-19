@@ -427,87 +427,92 @@ body{
   stroke:#fb923c;
 }
 
-/* ===== PORTADA MOVIL PREMIUM ===== */
+/* ===== PORTADA FULL WIDTH PREMIUM ===== */
 
-.portada {
-  position: relative;
-  height: 75vh;
-  background-image: url('img/maria-2026.jpg');
-  background-size: cover;
-  background-position: center;
-  border-radius: 25px;
-  margin-bottom: 25px;
-  overflow: hidden;
+.evento-container{
+  max-width:520px;
+  margin:auto;
+  padding:0 0 60px;
 }
 
-.portada::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+/* Portada full ancho */
+.portada{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  margin-left:calc(-50vw + 50%);
+  border-radius:0;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
 }
 
-.portada-overlay {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
+/* Oscurecer elegante */
+.portada::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.85));
 }
 
-.portada-overlay h1 {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 25px;
+/* Overlay centrado real */
+.portada-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
 }
 
-/* COUNTDOWN */
-
-.countdown {
-  display: flex;
-  gap: 12px;
+/* Título elegante */
+.portada-overlay h1{
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  font-weight:500;
+  font-size:34px;
+  letter-spacing:1px;
+  margin-bottom:30px;
+  color:#ffffff;
 }
 
-.time-box {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  padding: 12px 14px;
-  border-radius: 15px;
-  min-width: 65px;
+/* COUNTDOWN CENTRADO PERFECTO */
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
 }
 
-.time-box span {
-  font-size: 22px;
-  font-weight: 700;
-  display: block;
+.time-box{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  padding:14px 16px;
+  border-radius:16px;
+  min-width:70px;
+  text-align:center;
 }
 
-.time-box small {
-  font-size: 11px;
-  opacity: 0.8;
+.time-box span{
+  font-size:22px;
+  font-weight:600;
+  display:block;
 }
 
-.evento-iniciado {
-  display: none;
-  font-size: 20px;
-  font-weight: 600;
-  margin-top: 20px;
-  color: #c8a95c;
+.time-box small{
+  font-size:11px;
+  opacity:0.8;
 }
 
-.dot.active {
-  background:#c8a95c;
-  opacity:1;
-}
-
-@media (max-width:768px){
-  .portada{
-    height: 230px;
-    background-position: center 25%;
-  }
+/* Mensaje final */
+.evento-iniciado{
+  display:none;
+  font-size:22px;
+  font-weight:500;
+  margin-top:20px;
+  color:#c8a95c;
 }
